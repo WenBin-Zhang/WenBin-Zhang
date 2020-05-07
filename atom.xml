@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-04T04:10:45.365Z</updated>
+  <updated>2020-05-07T17:42:21.062Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue-cli@3中使用bootstrap</title>
+    <link href="http://yoursite.com/2020/05/08/vue-import-bootstrap/"/>
+    <id>http://yoursite.com/2020/05/08/vue-import-bootstrap/</id>
+    <published>2020-05-07T16:38:49.000Z</published>
+    <updated>2020-05-07T17:42:21.062Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Vue-cli-3创建的项目中如何使用Bootstrap&quot;&gt;&lt;a href=&quot;#Vue-cli-3创建的项目中如何使用Bootstrap&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
+    
+      <category term="Bootstrap" scheme="http://yoursite.com/categories/Vue/Bootstrap/"/>
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+      <category term="Bootstrap" scheme="http://yoursite.com/tags/Bootstrap/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

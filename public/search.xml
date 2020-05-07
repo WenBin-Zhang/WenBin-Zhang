@@ -24,4 +24,42 @@
         <tag>hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Vue-cli@3中使用bootstrap</title>
+    <url>/2020/05/08/vue-import-bootstrap/</url>
+    <content><![CDATA[<h1 id="Vue-cli-3创建的项目中如何使用Bootstrap"><a href="#Vue-cli-3创建的项目中如何使用Bootstrap" class="headerlink" title="Vue-cli@3创建的项目中如何使用Bootstrap"></a>Vue-cli@3创建的项目中如何使用Bootstrap</h1><h2 id="一、安装所需包"><a href="#一、安装所需包" class="headerlink" title="一、安装所需包"></a>一、安装所需包</h2><ol>
+<li><p>Bootstrap 是基于 jQuery 开发的，所以先安装 jQuery。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install jquery -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Popper.js, BootStrap 内部有些嵌套组件，是依靠 Popper.js 来实现定位的。非必须安装如果你的项目会用到 BootStrap 中的类似于 下拉列表这样的组件，建议先提前安装 popper.js,否则可能报错。关于popper.js的介绍以及具体介绍如下。</p>
+<blockquote>
+<p><em>Popper.js是一款功能强大的JS定位引擎。</em>  <a href="https://blog.csdn.net/jhzhahuaiyu/article/details/90213582" target="_blank" rel="noopener">站在原型链顶端的男人的博客</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install popper.js -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 BootStrap 包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install bootstrap@3 -s</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="二、配置main-js-全局引入-bootstrap-和-jquery"><a href="#二、配置main-js-全局引入-bootstrap-和-jquery" class="headerlink" title="二、配置main.js 全局引入 bootstrap 和 jquery"></a>二、配置main.js 全局引入 bootstrap 和 jquery</h2><p><img src="/2020/05/08/vue-import-bootstrap/2-1.png" alt="2-1"></p>
+<h2 id="三、配置-vue-config-js"><a href="#三、配置-vue-config-js" class="headerlink" title="三、配置 vue.config.js"></a>三、配置 vue.config.js</h2><ul>
+<li>在 vue-cli@3搭建的 vue 项目默认是不没有该文件的，需要在 package.json 的同级目录下手动创建。具体代码如下：</li>
+</ul>
+<!-- ![image-20200508011647219](C:\Users\zhang\AppData\Roaming\Typora\typora-user-images\image-20200508011647219.png) -->
+
+<hr>
+<p><em>如果一切顺利，便可以使用了。</em></p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+        <category>Bootstrap</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Bootstrap</tag>
+      </tags>
+  </entry>
 </search>
