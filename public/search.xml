@@ -45,6 +45,7 @@
 </li>
 </ol>
 <h2 id="二、配置main-js-全局引入-bootstrap-和-jquery"><a href="#二、配置main-js-全局引入-bootstrap-和-jquery" class="headerlink" title="二、配置main.js 全局引入 bootstrap 和 jquery"></a>二、配置main.js 全局引入 bootstrap 和 jquery</h2><p><img src="/2020/05/08/vue-import-bootstrap/2-1.png" alt="2-1"></p>
+<p><em>注意导入时，<code>import $ from &#39;jquery&#39;</code> 要写在最前面。否则可能报错</em></p>
 <h2 id="三、配置-vue-config-js"><a href="#三、配置-vue-config-js" class="headerlink" title="三、配置 vue.config.js"></a>三、配置 vue.config.js</h2><ul>
 <li>在 vue-cli@3搭建的 vue 项目默认是不没有该文件的，需要在 package.json 的同级目录下手动创建。具体代码如下：</li>
 </ul>
