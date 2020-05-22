@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-16T06:10:34.145Z</updated>
+  <updated>2020-05-22T05:46:40.332Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>配置npm安装全局模块时的路径</title>
+    <link href="http://yoursite.com/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
+    <id>http://yoursite.com/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/</id>
+    <published>2020-05-22T04:09:35.000Z</published>
+    <updated>2020-05-22T05:46:40.332Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;配置原因:&lt;/p&gt;
+&lt;p&gt;在执行 &lt;code&gt;npm install &amp;#39;包名&amp;#39; -g&lt;/code&gt; 命令全局安装的时候，会默认将模块安装在
+        
+      
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/categories/npm/"/>
+    
+      <category term="Node.js" scheme="http://yoursite.com/categories/npm/Node-js/"/>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+      <category term="Node.js" scheme="http://yoursite.com/tags/Node-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6（一）-let和const命令</title>
+    <link href="http://yoursite.com/2020/05/16/ES6%EF%BC%88%E4%B8%80%EF%BC%89-let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2020/05/16/ES6%EF%BC%88%E4%B8%80%EF%BC%89-let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-05-16T14:34:04.000Z</published>
+    <updated>2020-05-17T02:30:47.953Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-let-命令&quot;&gt;&lt;a href=&quot;#1-let-命令&quot; class=&quot;headerlink&quot; title=&quot;1. let 命令&quot;&gt;&lt;/a&gt;1. let 命令&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;ES6 新增 let 命令，用于声明变量。用来解决 var
+        
+      
+    
+    </summary>
+    
+    
+      <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
+    
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript的call、apply、bind函数的用法和区别</title>
