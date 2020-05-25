@@ -197,6 +197,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WenBin-Zhang">
+      <meta itemprop="description" content="Runoob of web front end~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenBin-Zhang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">css盒模型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-25 09:51:26 / 修改时间：21:43:57" itemprop="dateCreated datePublished" datetime="2020-05-25T09:51:26+08:00">2020-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/layout/" itemprop="url" rel="index"><span itemprop="name">layout</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>标准盒模型：<code>FireFox</code>、<code>Chrome</code>等标准浏览器默认盒模型，元素内容的宽高即元素宽高，不包括元素的内边距、外边距和边框。</p>
+<p>IE盒模型: IE浏览器（IE9以下版本）的盒模型，元素宽高等于元素内容宽高+元素内边距宽高+元素边框的粗细。</p>
+</blockquote>
+<p><strong>首先要提一点：元素的大小不是指元素的宽高，只有先了解这一点才能正确理解盒模型，元素大小永远都是content + padding + border + margin，但是元素宽高就不是固定的了。</strong></p>
+<p>先来一张维基百科里面盒模型的图片：</p>
+<p><img src="/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/%E7%9B%92%E6%A8%A1%E5%9E%8B.jpg" alt="css盒模型"></p>
+<p>如上图所示，一个元素一共分为 <strong>content、padding、border、margin</strong> 四个部分。</p>
+<p><img src="/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/%E6%A0%87%E5%87%86%E7%9B%92%E6%A8%A1%E5%9E%8B.jpg" alt="标准盒模型"></p>
+<p>标准盒模型的宽 = 内容的宽（即上图的width）;</p>
+<p>标准盒模型的高 =  内容的高（即上图的height）；</p>
+<p><img src="/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/IE%E7%9B%92%E6%A8%A1%E5%9E%8B.jpg" alt="IE盒模型"></p>
+<p>IE盒模型的宽 = 内容的宽 + 左内边距 + 右内边距 + 左边框的宽度 + 右边框的宽度；</p>
+<p>对应上图：<strong>content-width + padding-left + padding-right + border-left + border-right</strong></p>
+<p>IE盒模型的高 = 内容的高 + 顶部内边距 + 底部内边距 + 顶部边框的高度 + 底部边框的高度；</p>
+<p>对应上图：<strong>content-height + padding-top + padding-bottom + border-top + border-bottom</strong></p>
+<h2 id="box-sizing属性"><a href="#box-sizing属性" class="headerlink" title="box-sizing属性"></a>box-sizing属性</h2><p>目前的标准浏览器渲染引擎都是使用标准盒子模型规则解析渲染元素，但是我们可以通过<code>box-sizing</code>属性手动指定浏览器的解析渲染方式。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>content-box</td>
+<td>标准盒子模型。<br>元素的宽高等于元素内容的宽高。<br>元素的内边距，边框不参与到元素宽高的计算中。</td>
+</tr>
+<tr>
+<td>border-box</td>
+<td>IE盒子模型。<br>元素的宽高等于元素内容的宽/高+左右内边距的宽/高+边框的宽/高。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>从父元素继承box-sizing属性的值。</td>
+</tr>
+</tbody></table>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1067,7 +1176,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
