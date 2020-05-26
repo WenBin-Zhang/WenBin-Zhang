@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="DOM事件的级别 DOM0    element.onclick &#x3D; function(){} DOM2    element.addEventListener(&#39;click&#39;,function(){},false) DOM3    element.addEventListener(&#39;keyup&#39;,function(){},false)   DOM3 和 DOM2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM事件">
+<meta property="og:url" content="http://yoursite.com/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/index.html">
+<meta property="og:site_name" content="WenBin-Zhang">
+<meta property="og:description" content="DOM事件的级别 DOM0    element.onclick &#x3D; function(){} DOM2    element.addEventListener(&#39;click&#39;,function(){},false) DOM3    element.addEventListener(&#39;keyup&#39;,function(){},false)   DOM3 和 DOM2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81.jpg">
+<meta property="article:published_time" content="2020-05-26T11:04:01.000Z">
+<meta property="article:modified_time" content="2020-05-26T13:26:40.440Z">
+<meta property="article:author" content="WenBin-Zhang">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>DOM事件 | WenBin-Zhang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="WenBin-Zhang" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WenBin-Zhang</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">前端小白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/WenBin-Zhang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WenBin-Zhang">
+      <meta itemprop="description" content="Runoob of web front end~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenBin-Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DOM事件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-26 19:04:01 / 修改时间：21:26:40" itemprop="dateCreated datePublished" datetime="2020-05-26T19:04:01+08:00">2020-05-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="DOM事件的级别"><a href="#DOM事件的级别" class="headerlink" title="DOM事件的级别"></a>DOM事件的级别</h2><ul>
+<li>DOM0    <code>element.onclick = function(){}</code></li>
+<li>DOM2    <code>element.addEventListener(&#39;click&#39;,function(){},false)</code></li>
+<li>DOM3    <code>element.addEventListener(&#39;keyup&#39;,function(){},false)</code> </li>
+</ul>
+<p>DOM3 和 DOM2 相比只是添加了更多的事件类型，这里没有DOM1是因为DOM1没有实质性的内容。</p>
+<h2 id="DOM事件模型"><a href="#DOM事件模型" class="headerlink" title="DOM事件模型"></a>DOM事件模型</h2><blockquote>
+<p>事件模型有两个部分，捕获和冒泡。</p>
+</blockquote>
+<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.png" alt="事件模型"></p>
+<h3 id="1-何为DOM"><a href="#1-何为DOM" class="headerlink" title="1.何为DOM"></a>1.何为DOM</h3><p>DOM是“Document Object  Model”的缩写，中文译为“文档对象模型”。它是一种跨平台、跨语言的编程接口，将HTML，XHTML，XML文档映射成树形结构，树的每一个节点都是一个对象。正因如此，面向对象的编程语言（如javascript）可以通过DOM对HTML，XHTML，XML文档进行操作。对于HTML文档来说，它的根结点为document对象，HTML元素为element对象，HTML元素的属性为attr对象。</p>
+<h3 id="2-何为DOM事件及如何对其作出响应"><a href="#2-何为DOM事件及如何对其作出响应" class="headerlink" title="2.何为DOM事件及如何对其作出响应"></a>2.何为DOM事件及如何对其作出响应</h3><p>在浏览网页时，我们常常需要页面对用户的操作作出响应，比如点击“阅读全文”后我们期望页面展示被折叠的文本，按下回车键后浏览器提交已填好的表单。用户的各种操作都是“事件”。事件都是在对象上发生的，可能是DOM对象、BOM对象，等等。事件发生后，对象可能会作出响应，也有可能“无动于衷”。我们希望DOM元素对事件作出响应，一般而言有两种方法：<br><strong>i.事件属性</strong><br>事件属性是一种特殊的属性，它的值规定了对应事件发生时需要执行的javascript脚本。例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"console.log('button clicked!')"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面为button标签添加了事件属性onclick，其值为”console.log(‘button clicked!’)”，它规定了当元素被鼠标点击时，控制台输出’button clicked’。<br><strong>ii.addEventListener()方法</strong><br>EventTarget.addEventListener()方法将指定的监听器注册到EventTarget上，当该对象触发指定的事件时，指定的回调函数就会被执行。EventTarget可以是element对象,document对象或者任何其他支持事件的对象。例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--html文件中--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'mybutton'</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> mybutton=<span class="built_in">document</span>.getElementById(<span class="string">'mybutton'</span>);</span></span><br><span class="line"><span class="javascript">	mybutton.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'button clicked!'</span>);&#125;);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上例为button元素注册了click事件的监听器，并规定事件时触发控制台输出’button clicked’。</p>
+<h3 id="3-DOM事件模型"><a href="#3-DOM事件模型" class="headerlink" title="3.DOM事件模型"></a>3.DOM事件模型</h3><p>在讲解DOM事件模型前，再用一个例子作为引入。请看下面的html文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Event Model<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">div</span>&#123;<span class="attribute">position</span>: absolute;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#outer</span>&#123;</span></span><br><span class="line">        top: 100px;</span><br><span class="line">        left: 100px;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 400px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#aff</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#inner1</span>,<span class="selector-id">#inner2</span>&#123;</span></span><br><span class="line">        top: 50px;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 300px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#f9a</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#inner1</span>&#123;<span class="attribute">left</span>: <span class="number">50px</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#inner2</span>&#123;<span class="attribute">left</span>: <span class="number">350px</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#core</span>&#123;</span></span><br><span class="line">        left: 50px;</span><br><span class="line">        top: 50px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 150px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#f50</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'outer'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'inner1'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'inner2'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'core'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里为id分别为outer,inner1,inner2,core的4个元素定义了事件属性，元素被点击后将在控制台输出它的id。现在问题来了：<br>如果我点击core元素，控制台将会输出什么？<br>点击core元素时，由于core元素包含在inner2元素里，inner2元素同样被点击了;同理，inner2元素包含在outer元素里，那么outer元素也被点击了。这种情况下哪一个元素的click事件将会被触发,或者说三者都被触发？如果说三者都被触发，那么又是以怎样的顺序被触发？<br>我在火狐浏览器做了一次实验，控制台输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">core</span><br><span class="line">inner2</span><br><span class="line">outer</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，三者的事件都被触发了，且是“由内向外”触发的。<br>下面我们再做一个有趣的实验：我们将上面的html文件再做一个小小的改动，将core元素的样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">left: 50px;</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">left: -250px;</span><br></pre></td></tr></table></figure>
+
+<p>此时观察页面我们会发现，尽量core是inner2的子节点，但由于我们定义了“怪异”的样式，它跑到了inner1里面。现在我们再次用鼠标点击core，观察控制台的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">core</span><br><span class="line">inner2</span><br><span class="line">outer</span><br></pre></td></tr></table></figure>
+
+<p>和刚才的结果一模一样！尽管表面上inner1似乎被点击了，但它的click事件并没有触发;反而是看似未被点击的inner2元素的click事件被触发了。仿佛core元素的click事件被触发后，click事件一层一层向上“传播”给了父节点。<br>为了解释刚才的实验结果，是时候开始讲解DOM事件模型了。<br>当一个事件发生时，事件会在DOM树中进行传播。传播分为两个阶段：</p>
+<ul>
+<li><p>捕获阶段<br>在此阶段，事件从根结点（即document结点）开始向下传播，直到事件源所在元素。</p>
+</li>
+<li><p>冒泡阶段<br>在此阶段，事件从事件源开始向上传播，直到根结点。</p>
+<p>拿刚才的例子来说，事件传播的顺序为：<br>document捕获-&gt;html捕获-&gt;body捕获-&gt;outer捕获-&gt;inner2捕获-&gt;core捕获-&gt;core冒泡-&gt;inner2冒泡-&gt;outer冒泡-&gt;html冒泡-&gt;document冒泡</p>
+<p>对于事件属性，默认在冒泡阶段触发事件。如果用addEventListener()方法注册监听器，则可以指定在捕获阶段还是冒泡阶段触发事件：如果最后一个参数为false（默认值），则在冒泡阶段触发事件;如果为true，则在捕获阶段触发事件。</p>
+<p>一般来说，我们推荐采用addEventListener()方法来注册监听器，而尽量不用事件属性。因为事件属性不利于行为与结构的分离，使代码难以维护。</p>
+</li>
+</ul>
+<h2 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h2><p>一个完整的事件流包含三个阶段：捕获阶段（Capturing Phase）、事件处理阶段（Target Phase）、事件冒泡阶段（Bubbling Phase）。</p>
+<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81.jpg" alt="DOM事件流"></p>
+<p>从用户触发元素到浏览器执行响应事件这整个过程，就是事件流。</p>
+<h2 id="DOM事件捕获的具体流程"><a href="#DOM事件捕获的具体流程" class="headerlink" title="DOM事件捕获的具体流程"></a>DOM事件捕获的具体流程</h2><h2 id="Event对象的常见应用"><a href="#Event对象的常见应用" class="headerlink" title="Event对象的常见应用"></a>Event对象的常见应用</h2><ul>
+<li><p><strong>event.preventDefault()</strong></p>
+<p>阻止事件的默认行为，例如<code>&lt;a&gt;&lt;/a&gt;</code>标签的默认点击行为是跳转到新的页面，使用<code>event.preventDefault()</code>可以阻止这种跳转行为。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"target"</span> <span class="attr">href</span>=<span class="string">"www.baidu.com"</span>&gt;</span>跳转到百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> target = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>);</span></span><br><span class="line"><span class="actionscript">    target.addEventListener(<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        event.preventDefault(); <span class="comment">//阻止跳转行为</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>event.stopPropagation()</strong></p>
+<p>阻止冒泡行为：点击子元素时不会出发父元素的点击事件。</p>
+</li>
+<li><p><strong>event.stopImmediatePropagation()</strong></p>
+<p>当一个DOM元素绑定了多个响应事件后，可以通过此方法阻止指定响应事件的执行。</p>
+</li>
+<li><p><strong>event.currentTarget</strong></p>
+</li>
+<li><p><strong>event.target</strong></p>
+<p><strong>事件委托</strong>时用到的最多，当一个父级元素下面的子元素非常多，并且子元素都有各自的点击事件，普通做法就是一个一个添加响应事件，这种做法并不是理想的做法，浪费大量的内存，以及过多的事件注册会导致用户体验很差。</p>
+<p>此时我们就可以采用事件委托的方式，将所有子元素的事件都绑定在父级元素上，然后通过<code>event.target</code>判断具体是点击的哪一个子元素，然后执行相应的事件处理函数即可。</p>
+<p>事件委托详情参见：</p>
+</li>
+</ul>
+<h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义一个Event对象</span></span><br><span class="line"><span class="keyword">let</span> eve = <span class="keyword">new</span> Event(<span class="string">'custome'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定自定义事件</span></span><br><span class="line">dom.addEventListener(<span class="string">'custome'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'custome'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行自定义事件</span></span><br><span class="line">dom.dispatchEvent(eve);</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>多一分打赏，多一根头发 :)</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="WenBin-Zhang 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="WenBin-Zhang 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="prev" title="css盒模型">
+      <i class="fa fa-chevron-left"></i> css盒模型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/26/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/" rel="next" title="事件委托">
+      事件委托 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM事件的级别"><span class="nav-number">1.</span> <span class="nav-text">DOM事件的级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM事件模型"><span class="nav-number">2.</span> <span class="nav-text">DOM事件模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-何为DOM"><span class="nav-number">2.1.</span> <span class="nav-text">1.何为DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-何为DOM事件及如何对其作出响应"><span class="nav-number">2.2.</span> <span class="nav-text">2.何为DOM事件及如何对其作出响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-DOM事件模型"><span class="nav-number">2.3.</span> <span class="nav-text">3.DOM事件模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM事件流"><span class="nav-number">3.</span> <span class="nav-text">DOM事件流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM事件捕获的具体流程"><span class="nav-number">4.</span> <span class="nav-text">DOM事件捕获的具体流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event对象的常见应用"><span class="nav-number">5.</span> <span class="nav-text">Event对象的常见应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义事件"><span class="nav-number">6.</span> <span class="nav-text">自定义事件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="WenBin-Zhang"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">WenBin-Zhang</p>
+  <div class="site-description" itemprop="description">Runoob of web front end~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WenBin-Zhang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
