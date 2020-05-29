@@ -197,6 +197,125 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WenBin-Zhang">
+      <meta itemprop="description" content="Runoob of web front end~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenBin-Zhang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">浏览器渲染机制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-29 18:37:10 / 修改时间：22:23:13" itemprop="dateCreated datePublished" datetime="2020-05-29T18:37:10+08:00">2020-05-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、什么是-DOCTYPE-及作用"><a href="#一、什么是-DOCTYPE-及作用" class="headerlink" title="一、什么是 DOCTYPE 及作用"></a>一、什么是 DOCTYPE 及作用</h2><blockquote>
+<p>DOCTYPE标签是一种标准通用标记语言的文档类型声明，它的目的是要告诉<a href="https://baike.baidu.com/item/标准通用标记语言/6805073" target="_blank" rel="noopener">标准通用标记语言</a>解析器，它应该使用什么样的文档类型定义（<a href="https://baike.baidu.com/item/DTD" target="_blank" rel="noopener">DTD</a>）来解析文档。</p>
+<p>DTD：document type definition，文档类型定义，是一系列的语法规则。会告诉浏览器以何种协议来解析文档，例如XML和HTML。</p>
+</blockquote>
+<p>对于前端来说作用就是<strong>告诉浏览器以何种DTD，以什么标准来解析我们的文档也就是我们的html文件。</strong></p>
+<h3 id="常见的-DOCTYPE"><a href="#常见的-DOCTYPE" class="headerlink" title="常见的 DOCTYPE"></a>常见的 DOCTYPE</h3><ul>
+<li><p>HTML 5</p>
+<p><code>&lt;!DOCTYPE html&gt;</code> ，这是目前最主要的。</p>
+</li>
+<li><p>HTML 4.01 Strict 4.01版本的严格模式DTD，包含所有的HTML元素和属性，但是不包括展示性和已经弃用的元素 （比如 font）。这种模式下使用已经废弃过的元素，浏览器会报错。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD HTML 4.01//EN"</span> <span class="meta-string">"http://www.w3.org/TR/html4/strict.dtd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML 4.01 Transitional 4.01版本的传统模式DTD，包含所有的HTML元素和属性，包括展示性和已经弃用的元素 （比如 font）。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="meta-string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<h2 id="二、浏览器渲染过程"><a href="#二、浏览器渲染过程" class="headerlink" title="二、浏览器渲染过程"></a>二、浏览器渲染过程</h2><p><img src="/2020/05/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B.png" alt="浏览器渲染过程"></p>
+<ol>
+<li>HTML 解释器解析 HTML 文件生成对应的DOM树，这也就是我们平常用js操作的DOM。同时CSS解释器解析CSS文件，生成相应的样式规则。</li>
+<li>DOM Tree 和 Style Rules 经过结合生成渲染树，浏览器通过 Layout 计算渲染树中的每一个元素的渲染位置。</li>
+<li>得出每一个元素的渲染位置以后，就开始绘制，然后显示。</li>
+</ol>
+<h2 id="三、Reflow（重排）"><a href="#三、Reflow（重排）" class="headerlink" title="三、Reflow（重排）"></a>三、Reflow（重排）</h2><blockquote>
+<p>DOM结构中的各个元素都有自己的盒子，这些都需要浏览器根据各种样式来计算并根据计算结果将元素放到它该出现的位置，这个过程我们称之为reflow。</p>
+</blockquote>
+<p>触发Reflow的条件:</p>
+<ol>
+<li>增加，删除，修改DOM节点时，会导致Reflow或Repaint。</li>
+<li>移动DOM的位置时，或者在元素上添加动画。</li>
+<li>修改CSS样式时。</li>
+<li>当Resize窗口的时候（移动端没有这个问题），或者是滚动页面的时候。</li>
+<li>修改网页的默认字体时（不要轻易修改网页的默认字体）。</li>
+</ol>
+<h2 id="四、Repaint（重绘）"><a href="#四、Repaint（重绘）" class="headerlink" title="四、Repaint（重绘）"></a>四、Repaint（重绘）</h2><blockquote>
+<p>当各种盒子的位置，大小以及其他属性，例如颜色、字体大小等都确定下来后，浏览器于是把这些元素都按照各自的特性绘制了一遍，于是页面的内容出现了，这个过程称之为repaint。</p>
+</blockquote>
+<p>触发Repaint的条件:</p>
+<ol>
+<li>DOM改动</li>
+<li>CSS改动</li>
+</ol>
+<p>ps：总的来说导致repaint的原因就是上述两点，但具体的原因有非常多，总之页面出现了变化，肯定就导致了repaint。</p>
+<p>频繁的 Repaint 会影响整个网页的性能和流畅度。</p>
+<p>例如动态添加一百个div，那么正常情况下就会不断的repaint，为了减轻这种影响我们可以使用</p>
+<p><code>document.createDocumentFragment()</code>的方式将所有要添加的元素放入fragment片段中，最后统一插入document，这样就只会渲染一次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> root = <span class="built_in">document</span>.querySelector(<span class="string">'dom元素'</span>);</span><br><span class="line"><span class="keyword">let</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    div.innerHTML = <span class="string">'我是第'</span> + i + <span class="string">'个div'</span>;</span><br><span class="line">    fragment.appendChild(div);</span><br><span class="line">&#125;</span><br><span class="line">root.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1159,108 +1278,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/vue-import-bootstrap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="WenBin-Zhang">
-      <meta itemprop="description" content="Runoob of web front end~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WenBin-Zhang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/08/vue-import-bootstrap/" class="post-title-link" itemprop="url">Vue-cli@3中使用bootstrap</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-08 00:38:49" itemprop="dateCreated datePublished" datetime="2020-05-08T00:38:49+08:00">2020-05-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-09 00:21:49" itemprop="dateModified" datetime="2020-05-09T00:21:49+08:00">2020-05-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/Bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Vue-cli-3创建的项目中如何使用Bootstrap"><a href="#Vue-cli-3创建的项目中如何使用Bootstrap" class="headerlink" title="Vue-cli@3创建的项目中如何使用Bootstrap"></a>Vue-cli@3创建的项目中如何使用Bootstrap</h1><h2 id="一、安装所需包"><a href="#一、安装所需包" class="headerlink" title="一、安装所需包"></a>一、安装所需包</h2><ol>
-<li><p>Bootstrap 是基于 jQuery 开发的，所以先安装 jQuery。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install jquery -s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 Popper.js, BootStrap 内部有些嵌套组件，是依靠 Popper.js 来实现定位的。非必须安装如果你的项目会用到 BootStrap 中的类似于 下拉列表这样的组件，建议先提前安装 popper.js,否则可能报错。关于popper.js的介绍以及具体介绍如下。</p>
-<blockquote>
-<p><em>Popper.js是一款功能强大的JS定位引擎。</em>  <a href="https://blog.csdn.net/jhzhahuaiyu/article/details/90213582" target="_blank" rel="noopener">站在原型链顶端的男人的博客</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install popper.js -s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 BootStrap 包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install bootstrap@3 -s</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h2 id="二、配置main-js-全局引入-bootstrap-和-jquery"><a href="#二、配置main-js-全局引入-bootstrap-和-jquery" class="headerlink" title="二、配置main.js 全局引入 bootstrap 和 jquery"></a>二、配置main.js 全局引入 bootstrap 和 jquery</h2><p><img src="/2020/05/08/vue-import-bootstrap/2-1.png" alt="2-1"></p>
-<p><em>注意导入时，<code>import $ from &#39;jquery&#39;</code> 要写在最前面。否则可能报错</em></p>
-<h2 id="三、配置-vue-config-js"><a href="#三、配置-vue-config-js" class="headerlink" title="三、配置 vue.config.js"></a>三、配置 vue.config.js</h2><ul>
-<li>在 vue-cli@3搭建的 vue 项目默认是不没有该文件的，需要在 package.json 的同级目录下手动创建。具体代码如下：</li>
-</ul>
-<p><img src="/2020/05/08/vue-import-bootstrap/3-1.png" alt="3-1"></p>
-<hr>
-<p><em>如果一切顺利，便可以使用了。</em></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1332,20 +1349,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
