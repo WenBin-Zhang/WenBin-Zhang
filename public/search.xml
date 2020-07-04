@@ -614,4 +614,94 @@
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>js中判断对象的数据类型</title>
+    <url>/2020/07/04/js%E4%B8%AD%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>一、利用 <code>typeof</code> 方法</p>
+<p>​        这种方法只能用来判断如下几种数据类型eg: <code>Number</code>、<code>Boolean</code>、<code>String</code>、<code>Undefined</code>、<code>Symbol</code>、<code>Function</code></p>
+<p>​        <code>typeof</code>实现原理是利用<code>js</code>底层会在变量的机器码的低位1-3位存储其类型信息（真实性有待考察，因为目前还没有看到function的机器码，这无法解释<code>typeof</code>可以判断<code>function</code>）</p>
+<ul>
+<li>000：对象</li>
+<li>010：浮点数(就是Number，js里所有的数字其实都是以浮点数的形式存储的)</li>
+<li>100：字符串</li>
+<li>110：布尔</li>
+<li>1：整数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">123</span>)	<span class="comment">//number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">'abc'</span>)	<span class="comment">//string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>) <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">false</span>) <span class="comment">//boolean</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Symbol</span>()) <span class="comment">//symbol</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//最特别的我认为就是function，typeof居然是可以判断出function的</span></span><br><span class="line">consol.log(<span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) <span class="comment">//function</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//但是用来判断非引用类型的对象，则统一返回object，特别注意这里的null也返回object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> []) <span class="comment">//object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> &#123;&#125;) <span class="comment">//object</span></span><br><span class="line"><span class="comment">/////////////////////////////////////////////////////////////////</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>) <span class="comment">//object</span></span><br><span class="line"><span class="comment">// 原因：null的所有机器码都是000</span></span><br><span class="line"><span class="comment">/////////////////////////////////////////////////////////////////</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Date</span>()) <span class="comment">//object</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>typeof 方法使用非常方便，但是要注意使用场景，不适合用来判断引用类型的数据</strong></p>
+<p>补充：symbol类型的变量一般用来作为一个对象的key（键值），而不是像普通变量一样接受一个值。</p>
+<p>二、利用<code>intanceof</code>方法</p>
+<p>​        原理：判断一个构造函数的prototype属性指向的对象是否存在于检测对象的原型链上</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">Object</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">Number</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">Date</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">new</span> <span class="built_in">Function</span>();</span><br><span class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> <span class="built_in">Object</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> <span class="built_in">Function</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(f <span class="keyword">instanceof</span> <span class="built_in">Number</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="built_in">console</span>.log(p <span class="keyword">instanceof</span> Person); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">Man.prototype = p; <span class="comment">//man 以p位原型对象继承Person类</span></span><br><span class="line"><span class="keyword">let</span> m = <span class="keyword">new</span> Man();</span><br><span class="line"><span class="built_in">console</span>.log(m <span class="keyword">instanceof</span> Man); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(m <span class="keyword">instanceof</span> Person); <span class="comment">//true: </span></span><br><span class="line"><span class="comment">// 原因Person.prototype === m.__proto__.__proto__,即Person的原型对象出现在了m对象的原型链上</span></span><br></pre></td></tr></table></figure>
+
+<p>适用场景：判断一个引用类型的变量所属的类。</p>
+<p><strong>因为<code>Object.prototype</code>是顶级原型对象，出现在所有的对象的原型链上，所以所有的对象采用<code>instanceof Object === ture</code></strong></p>
+<p>三、<code>Object.prototype.toString.call(&#39;待检测对象&#39;)</code>–推荐使用</p>
+<p>​        原理：利用<code>js</code>的内部属性<code>[[class]]</code>(官方定义：一个字符串值，表明了该对象的类型)，<code>[[class]]</code>属性的值可以用来判断一个原生对象属于哪种内置类型，注意：在<code>ECMAScript</code>规范中规定这个属性只能通过<code>Object.prototype.toString</code>方法获取.</p>
+<p>​        具体执行过程：</p>
+<pre><code>1.    获取对象的`[[class]]`属性的值
+  2.    得到一个&quot;[Object, 步骤一获取到的表达内置类型的字符串]&quot; 样式的字符串
+  3.    返回步骤2得到的字符串</code></pre><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj.toString()) <span class="comment">//"[Object, Object]" 的原因之所在</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = []</span><br><span class="line"><span class="built_in">console</span>.log(arr.toString()) <span class="comment">//"" 因为在数组类的原型对象上重新定义了自己的toString方法，除了数组很多内置对象都重写了这个方法，以满足更多的功能</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bool = <span class="literal">true</span></span><br><span class="line"><span class="built_in">console</span>.log(bool.toString()) <span class="comment">//"true" Boolean对象也重写了该方法，更多详情如下表</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>行为描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Array</td>
+<td>将 Array 的每个元素转换为字符串，并将它们依次连接起来，两个元素之间用英文逗号作为分隔符进行拼接。</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>如果布尔值是 true，则返回 “true”。否则返回 “false”。</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>返回日期的文本表示。</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>返回一个包含相关错误信息的字符串。</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>返回如下格式的字符串，其中 functionname 是一个函数的名称，此函数的 toString 方法被调用： “function functionname() { [native code] }”</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>返回数值的字符串表示。还可返回以指定进制表示的字符串，请参考 <a href="http://www.365mini.com/page/javascript-number-tostring.htm" target="_blank" rel="noopener">Number.toString()</a>。</td>
+</tr>
+<tr>
+<td>String</td>
+<td>返回 String 对象的值。</td>
+</tr>
+<tr>
+<td>Object(默认)</td>
+<td>返回 “[object ObjectName]”，其中 ObjectName 是对象类型的名称。</td>
+</tr>
+</tbody></table>
+<p>回到<code>Object.prototype.toString.call()</code>用来判断数据类型的方法入下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(arr) <span class="comment">// "[Object, Array]"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(num) <span class="comment">// "[Object, Number]"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">"hello world"</span>;</span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(str) <span class="comment">// "[Object, String]"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//其它类型也是如此</span></span><br></pre></td></tr></table></figure>
+
+<p>还可以对其返回值做进一步的优化：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(arg).slice(<span class="number">8</span>, <span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = []</span><br><span class="line"><span class="built_in">console</span>.log(getType(arr)) <span class="comment">// Array :这样就很清楚直接了</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>判断基本的数据类型如：Number，String，Boolean 直接使用<code>typeof</code></li>
+<li>判断引用类型的所属类：<code>instanceof</code>足以</li>
+<li>比较全能的使用: <code>Object.prototype.toString.call(&#39;待测对象&#39;)</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
 </search>
