@@ -615,7 +615,7 @@
       </tags>
   </entry>
   <entry>
-    <title>js中判断对象的数据类型</title>
+    <title>js中判断变量的数据类型</title>
     <url>/2020/07/04/js%E4%B8%AD%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<p>一、利用 <code>typeof</code> 方法</p>
 <p>​        这种方法只能用来判断如下几种数据类型eg: <code>Number</code>、<code>Boolean</code>、<code>String</code>、<code>Undefined</code>、<code>Symbol</code>、<code>Function</code></p>
