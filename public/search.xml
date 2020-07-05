@@ -704,4 +704,37 @@
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>浏览器内核简要</title>
+    <url>/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/</url>
+    <content><![CDATA[<ol>
+<li><p>Trident 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/IE%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="IE浏览器"></p>
+<p>以不标准而闻名的IE浏览器内核，没有遵循W3C制定的标准，导致很多时候他的渲染方式和其它标准浏览器不同，需要单独为其写大量的hack代码。但由于其是早期windows系统上自带的且是默认的浏览器，所以一直到现仍然有一定的市场占有率。</p>
+</li>
+<li><p>Gecko 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/firefox%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="firefox浏览器"></p>
+<p>这是一个完全开源的浏览器内核，遵循W3C规范，由Mozilla组织开发，是一个可以跨平台的内核，目前有一定的市场占有率。代表浏览器firefox浏览器。</p>
+</li>
+<li><p>Presto 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/opera%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="Opera浏览器"></p>
+<p>是早期的Opera浏览器使用的内核，已被Opera放弃。特点：是一个动态内核，与前面几个内核的最大的区别就在脚本处理上，Presto有着天生的优势，页面的全部或者部分都能够在回应脚本事件时等情况下被重新解析。此外该内核在执行Javascrīpt的时候有着最快的速度。</p>
+</li>
+<li><p>Webkit 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/safari%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="Safari浏览器"></p>
+<p>苹果公司开发的内核同样也是开源的，代表浏览器就是Mac OS X自带的safari浏览器，以及Android默认浏览器，也遵循W3C标准，并且随着移动端设备越来越多，该内核的市场占有率也不低。而且chrome浏览器早期也是基于这款内核开发，后来才基于这款内核开发出了自己的Blink内核。</p>
+</li>
+<li><p>Blink 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/chrome%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="chrome浏览器"></p>
+<p>由chrome和opera一起基于webkit开发的浏览器引擎，是谷歌浏览器如此好用的原因之一，再结合谷歌浏览器的V8引擎，blink处理渲染V8处理脚本，可以让用户体验得到巨大的提升，这也是前端标配。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>others</category>
+      </categories>
+      <tags>
+        <tag>others</tag>
+      </tags>
+  </entry>
 </search>

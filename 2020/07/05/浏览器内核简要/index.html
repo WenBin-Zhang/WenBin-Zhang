@@ -20,20 +20,26 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
-  <meta name="description" content="Runoob of web front end~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WenBin-Zhang">
-<meta property="og:url" content="http://yoursite.com/categories/css/layout/index.html">
+  <meta name="description" content="Trident 内核  以不标准而闻名的IE浏览器内核，没有遵循W3C制定的标准，导致很多时候他的渲染方式和其它标准浏览器不同，需要单独为其写大量的hack代码。但由于其是早期windows系统上自带的且是默认的浏览器，所以一直到现仍然有一定的市场占有率。  Gecko 内核  这是一个完全开源的浏览器内核，遵循W3C规范，由Mozilla组织开发，是一个可以跨平台的内核，目前有一定的市场占有率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器内核简要">
+<meta property="og:url" content="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/index.html">
 <meta property="og:site_name" content="WenBin-Zhang">
-<meta property="og:description" content="Runoob of web front end~">
+<meta property="og:description" content="Trident 内核  以不标准而闻名的IE浏览器内核，没有遵循W3C制定的标准，导致很多时候他的渲染方式和其它标准浏览器不同，需要单独为其写大量的hack代码。但由于其是早期windows系统上自带的且是默认的浏览器，所以一直到现仍然有一定的市场占有率。  Gecko 内核  这是一个完全开源的浏览器内核，遵循W3C规范，由Mozilla组织开发，是一个可以跨平台的内核，目前有一定的市场占有率">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/IE%E6%B5%8F%E8%A7%88%E5%99%A8logo.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/firefox%E6%B5%8F%E8%A7%88%E5%99%A8logo.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/opera%E6%B5%8F%E8%A7%88%E5%99%A8logo.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/safari%E6%B5%8F%E8%A7%88%E5%99%A8logo.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/chrome%E6%B5%8F%E8%A7%88%E5%99%A8logo.png">
+<meta property="article:published_time" content="2020-07-04T23:22:01.000Z">
+<meta property="article:modified_time" content="2020-07-05T00:26:58.352Z">
 <meta property="article:author" content="WenBin-Zhang">
-<meta property="article:tag" content="uniapp">
-<meta property="article:tag" content="vue.js">
-<meta property="article:tag" content="node.js">
+<meta property="article:tag" content="others">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/IE%E6%B5%8F%E8%A7%88%E5%99%A8logo.png">
 
-<link rel="canonical" href="http://yoursite.com/categories/css/layout/">
+<link rel="canonical" href="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/">
 
 
 <script id="page-configurations">
@@ -41,12 +47,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: layout | WenBin-Zhang</title>
+  <title>浏览器内核简要 | WenBin-Zhang</title>
   
 
 
@@ -191,71 +197,156 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">layout
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WenBin-Zhang">
+      <meta itemprop="description" content="Runoob of web front end~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenBin-Zhang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浏览器内核简要
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-05 07:22:01 / 修改时间：08:26:58" itemprop="dateCreated datePublished" datetime="2020-07-05T07:22:01+08:00">2020-07-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/others/" itemprop="url" rel="index"><span itemprop="name">others</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <ol>
+<li><p>Trident 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/IE%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="IE浏览器"></p>
+<p>以不标准而闻名的IE浏览器内核，没有遵循W3C制定的标准，导致很多时候他的渲染方式和其它标准浏览器不同，需要单独为其写大量的hack代码。但由于其是早期windows系统上自带的且是默认的浏览器，所以一直到现仍然有一定的市场占有率。</p>
+</li>
+<li><p>Gecko 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/firefox%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="firefox浏览器"></p>
+<p>这是一个完全开源的浏览器内核，遵循W3C规范，由Mozilla组织开发，是一个可以跨平台的内核，目前有一定的市场占有率。代表浏览器firefox浏览器。</p>
+</li>
+<li><p>Presto 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/opera%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="Opera浏览器"></p>
+<p>是早期的Opera浏览器使用的内核，已被Opera放弃。特点：是一个动态内核，与前面几个内核的最大的区别就在脚本处理上，Presto有着天生的优势，页面的全部或者部分都能够在回应脚本事件时等情况下被重新解析。此外该内核在执行Javascrīpt的时候有着最快的速度。</p>
+</li>
+<li><p>Webkit 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/safari%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="Safari浏览器"></p>
+<p>苹果公司开发的内核同样也是开源的，代表浏览器就是Mac OS X自带的safari浏览器，以及Android默认浏览器，也遵循W3C标准，并且随着移动端设备越来越多，该内核的市场占有率也不低。而且chrome浏览器早期也是基于这款内核开发，后来才基于这款内核开发出了自己的Blink内核。</p>
+</li>
+<li><p>Blink 内核</p>
+<p><img src="/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/chrome%E6%B5%8F%E8%A7%88%E5%99%A8logo.png" alt="chrome浏览器"></p>
+<p>由chrome和opera一起基于webkit开发的浏览器引擎，是谷歌浏览器如此好用的原因之一，再结合谷歌浏览器的V8引擎，blink处理渲染V8处理脚本，可以让用户体验得到巨大的提升，这也是前端标配。</p>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-25T09:51:26+08:00"
-              content="2020-05-25">
-          05-25
-        </time>
+    
+    
+    
+        <div class="reward-container">
+  <div>多一分打赏，多一根头发 :)</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="WenBin-Zhang 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="WenBin-Zhang 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/" itemprop="url">
-            <span itemprop="name">css盒模型</span>
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
           </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-23T10:08:51+08:00"
-              content="2020-05-23">
-          05-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/23/float%E5%B8%83%E5%B1%80/" itemprop="url">
-            <span itemprop="name">float布局</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        </div>
     </div>
   </div>
-  
-  
-  
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/others/" rel="tag"># others</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/04/js%E4%B8%AD%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="prev" title="js中判断变量的数据类型">
+      <i class="fa fa-chevron-left"></i> js中判断变量的数据类型
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
