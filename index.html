@@ -1192,10 +1192,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-23 10:08:51 / 修改时间：16:58:56" itemprop="dateCreated datePublished" datetime="2020-05-23T10:08:51+08:00">2020-05-23</time>
+              <time title="创建时间：2020-05-23 10:08:51" itemprop="dateCreated datePublished" datetime="2020-05-23T10:08:51+08:00">2020-05-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-07 16:18:48" itemprop="dateModified" datetime="2020-07-07T16:18:48+08:00">2020-07-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1279,12 +1285,17 @@
 <p>闭合浮动常用的几种方式：</p>
 <p>1、在浮动元素末尾添加一个空 <code>div</code> 设置其 <code>clear</code> 属性值为 both，例如 <code>&lt;div style=&quot;clear:both&quot;&gt;&lt;/div&gt;</code></p>
 <p>2、父级元素定义 <code>overflow:hidden</code></p>
-<p>3、对父级元素也使用浮动，就是说让所有元素都浮动起来，这种方法只建议用于理论，实际操作这种方式不太显示。</p>
+<p>3、对父级元素也使用浮动，就是说让所有元素都浮动起来，这种方法只建议用于理论，实际操作这种方式不太现实。</p>
 <p>4、对父级元素设置伪元素，即 ：after</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.class-name</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2020/05/23/float%E5%B8%83%E5%B1%80/%E9%97%AD%E5%90%88%E6%B5%AE%E5%8A%A8%E5%90%8E%E7%9A%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="闭合浮动后的示意图"></p>
 <p>如上图所示：闭合浮动后父级元素的高度出来了，这样即可解决高度崩塌的问题了。</p>
+<p>总结：闭合浮动主要依靠两种途径</p>
+<ol>
+<li>利用clear属性实现，例如上文的1，4解决方案</li>
+<li>利用父级元素产生BFC来实现，例如上文的2，3解决方案</li>
+</ol>
 
       
     </div>
