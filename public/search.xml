@@ -1,99 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Vue-cli@3中使用bootstrap</title>
-    <url>/2020/05/08/vue-import-bootstrap/</url>
-    <content><![CDATA[<h1 id="Vue-cli-3创建的项目中如何使用Bootstrap"><a href="#Vue-cli-3创建的项目中如何使用Bootstrap" class="headerlink" title="Vue-cli@3创建的项目中如何使用Bootstrap"></a>Vue-cli@3创建的项目中如何使用Bootstrap</h1><h2 id="一、安装所需包"><a href="#一、安装所需包" class="headerlink" title="一、安装所需包"></a>一、安装所需包</h2><ol>
-<li><p>Bootstrap 是基于 jQuery 开发的，所以先安装 jQuery。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install jquery -s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 Popper.js, BootStrap 内部有些嵌套组件，是依靠 Popper.js 来实现定位的。非必须安装如果你的项目会用到 BootStrap 中的类似于 下拉列表这样的组件，建议先提前安装 popper.js,否则可能报错。关于popper.js的介绍以及具体介绍如下。</p>
-<blockquote>
-<p><em>Popper.js是一款功能强大的JS定位引擎。</em>  <a href="https://blog.csdn.net/jhzhahuaiyu/article/details/90213582" target="_blank" rel="noopener">站在原型链顶端的男人的博客</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install popper.js -s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 BootStrap 包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install bootstrap@3 -s</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h2 id="二、配置main-js-全局引入-bootstrap-和-jquery"><a href="#二、配置main-js-全局引入-bootstrap-和-jquery" class="headerlink" title="二、配置main.js 全局引入 bootstrap 和 jquery"></a>二、配置main.js 全局引入 bootstrap 和 jquery</h2><p><img src="/2020/05/08/vue-import-bootstrap/2-1.png" alt="2-1"></p>
-<p><em>注意导入时，<code>import $ from &#39;jquery&#39;</code> 要写在最前面。否则可能报错</em></p>
-<h2 id="三、配置-vue-config-js"><a href="#三、配置-vue-config-js" class="headerlink" title="三、配置 vue.config.js"></a>三、配置 vue.config.js</h2><ul>
-<li>在 vue-cli@3搭建的 vue 项目默认是不没有该文件的，需要在 package.json 的同级目录下手动创建。具体代码如下：</li>
-</ul>
-<p><img src="/2020/05/08/vue-import-bootstrap/3-1.png" alt="3-1"></p>
-<hr>
-<p><em>如果一切顺利，便可以使用了。</em></p>
-]]></content>
-      <categories>
-        <category>Vue</category>
-        <category>Bootstrap</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Bootstrap</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript中i++和++i的区别</title>
-    <url>/2020/05/11/JavaScript%E4%B8%ADi-%E5%92%8C-i%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h2 id="一、-i-和-i-简单介绍"><a href="#一、-i-和-i-简单介绍" class="headerlink" title="一、++ i 和 i ++简单介绍"></a>一、++ i 和 i ++简单介绍</h2><p>++ 运算符又称自增运算符，功能为将操作数自加 1。</p>
-<p><strong>++ i 被称为前加加，++ 后面的变量执行自加操作，执行顺序为：先执行变量的自加操作，再引用变量的值。</strong></p>
-<p><strong>i ++ 被称为后加加，++ 前面的变量执行自加操作，执行顺序为：先引用变量的值，在执行自加操作。</strong></p>
-<p>在实际代码中，如果加加语句是一个独立的语句，那么两者是完全相同的。比如：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a ++; <span class="comment">/*完全等价于*/</span>  ++ a;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;...&#125;  <span class="comment">/*两者是完全等价的*/</span>  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span> ; ++ i)&#123;...&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面两个示例 自增语句都是一个独立的语句，在这种情况下，<code>++ i</code>和<code>i ++</code>是完全等价的。</p>
-<h2 id="二、-i-和-i-使用时的区别"><a href="#二、-i-和-i-使用时的区别" class="headerlink" title="二、 ++ i 和 i ++ 使用时的区别"></a>二、 ++ i 和 i ++ 使用时的区别</h2><p>当加加语句不是一个独立的语句，只是某一个语句的一部分，二者就有区别了。</p>
-<ul>
-<li>i ++</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> j = i ++; <span class="comment">//此时完整的语句为 let j = i ++;先执行变量赋值，再执行 ++ 操作先j = i = 0 后i = 1;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>( i ++ &lt; <span class="number">10</span>); <span class="comment">// 此时i是从0开始第一次比较，先判断 i &lt; 10,然后变量i再执行加加操作;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>++ i</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> j = ++ i; <span class="comment">//此时完整的语句为 let j = ++ i;先执行 ++ 操作，再赋值变量：先i = 1后j = i = 1;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>( ++ i &lt; <span class="number">10</span>); <span class="comment">// 此时i是从1开始第一次比较,变量i先执行加加操作，再判断 i &lt; 10;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>operator</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>operator</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript的call、apply、bind函数的用法和区别</title>
-    <url>/2020/05/16/JavaScript%E7%9A%84call%E3%80%81apply%E3%80%81bind%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h2 id="一、用法"><a href="#一、用法" class="headerlink" title="一、用法"></a>一、用法</h2><blockquote>
-<p>这三个方法都是 JavaScript 函数原型链上的方法，每个函数都会自动继承这三个方法。</p>
-<p>总的来说三者都是用来改变<strong>this指向</strong>的，可以实现在一个对象的成员函数调用其它对象的成员函数或者成员变量。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> jack = &#123;</span><br><span class="line">    name:<span class="string">'jack'</span>,</span><br><span class="line">    age:<span class="string">'23'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tom = &#123;</span><br><span class="line">    name:<span class="string">'tom'</span>,</span><br><span class="line">    age:<span class="string">'20'</span>,</span><br><span class="line">    printMessage: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'This is '</span> + <span class="keyword">this</span>.name + <span class="string">',he is '</span> + <span class="keyword">this</span>.age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tom.printMessage.call(jack);	<span class="comment">// 结果：This is jack,he is 23.</span></span><br><span class="line">tom.printMessage.apply(jack);	<span class="comment">// 结果：This is jack,he is 23.</span></span><br><span class="line">tom.printMessage.bind(jack)();	<span class="comment">// 结果：This is jack,he is 23.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以看见printMessage内部的this指向被改变，不在指向调用它的对象tom，而是指向了call、apply、bind传入的参数：对象jack。</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="二、区别"><a href="#二、区别" class="headerlink" title="二、区别"></a>二、区别</h2><blockquote>
-<p>这三个方法，在用途上没有什么区别，关键是在用法上存在区别。体现在他们三者的参数列表和返回值。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> jack = &#123;</span><br><span class="line">    name: <span class="string">'jack'</span>,</span><br><span class="line">    age: <span class="string">'23'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tom = &#123;</span><br><span class="line">    name: <span class="string">'tom'</span>,</span><br><span class="line">    age: <span class="string">'20'</span>,</span><br><span class="line">    printMessage: <span class="function"><span class="keyword">function</span>(<span class="params">from,to</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'This is '</span> + <span class="keyword">this</span>.name + <span class="string">',he is '</span> + <span class="keyword">this</span>.age + <span class="string">'from'</span> + <span class="keyword">from</span> </span><br><span class="line">                    + <span class="string">' to '</span> + to + <span class="string">'.'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// call方法，接受多个参数，第一个参数为执行函数的this值，其余参数将会按顺序赋值给执行函数的参数列表</span></span><br><span class="line">tom.printMessage.call(jack,<span class="string">'Beijin'</span>,<span class="string">'Shanghai'</span>);</span><br><span class="line"><span class="comment">// This is jack,he is 23 from Beijin to Shanghai</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* apply方法，接受两个参数，第一个参数为执行函数的this值，第二个参数是一个数组，数组元素将会按顺序赋值给执行函数的参数列表 */</span></span><br><span class="line">tom.printMessage.apply(jack,[<span class="string">'Beijin'</span>,<span class="string">'Shanghai'</span>]);</span><br><span class="line"><span class="comment">// This is jack,he is 23 from Beijin to Shanghai</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* bind方法，接受参数形式与call方法一致，但是返回的是一个新的函数，必须要手动调用一次才会执行。*/</span></span><br><span class="line">tom.printMessage.bind(jack,<span class="string">'Beijin'</span>,<span class="string">'Shanghai'</span>)();</span><br><span class="line"><span class="comment">// This is jack,he is 23 from Beijin to Shanghai</span></span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6（一）-let和const命令</title>
     <url>/2020/05/16/ES6%EF%BC%88%E4%B8%80%EF%BC%89-let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h2 id="1-let-命令"><a href="#1-let-命令" class="headerlink" title="1. let 命令"></a>1. let 命令</h2><blockquote>
@@ -145,63 +52,86 @@
       </tags>
   </entry>
   <entry>
-    <title>配置npm安装全局模块时的路径</title>
-    <url>/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
+    <title>canvas基础之几何图形绘制</title>
+    <url>/2021/11/20/canvas%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6/</url>
     <content><![CDATA[<blockquote>
-<p>配置原因:</p>
-<p>在执行 <code>npm install &#39;包名&#39; -g</code> 命令全局安装的时候，会默认将模块安装在 <code>C:\Users\用户名\AppData\Roaming路径下的npm和npm_cache</code> 中，不方便管理并且占用 C 盘空间。</p>
+<p>Canvas 是 HTML5新增的，一个可以使用脚本（通常为 JavaScript）在其中绘制图像的 HTML5 元素。它可以用来制作照片集或者制作动画，甚至可以进行实时视频处理和渲染。<br>Canvas 是由 HTML 代码配合高度和宽度属性而定义出的可绘制区域。JavaScript 代码可以访问该区域，类似于其它通用的二维 API, 通过一套完整的绘图函数来动态生成图形。</p>
 </blockquote>
-<ul>
-<li><p>解决方案：配置自定义的全局模块安装目录。</p>
-<ol>
-<li><p>手动创建两个文件夹 <code>node_global</code> 和 <code>node_cache</code> 。</p>
-<p>如果你的 <code>Node.js</code> 没有安装在 C 盘，你可以直接在 <code>Node.js</code> 的安装目录下创建这两个文件。</p>
-<p>如果你的 <code>Node.js</code> 是安装在 C 盘的，那么不建议你直接在其安装目录下创建，因为这样做意义不大，包文件还是存放在 C 盘。这种情况你可以在 C 盘以外你认为比较好管理的地方创建 <code>node_global</code> 和 <code>node_cache</code> 这两个目录。</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-1.png" alt="1-1"></p>
-<p>上图的<code>npm-install-package</code> 也是我手动创建的。总之哪里好管理你就先建在那里。</p>
-</li>
-<li><p>在 cmd 命令行下执行如下配置命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">"D:\npm-install-package\node_global"</span></span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">"D:\npm-install-package\node_cache"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行完毕后，需要去配置环境变量：</p>
-<p>环境变量 – 系统变量：新建一个变量 <strong>NODE_PATH</strong> ，值为 <strong>D:\npm-install-package\node_global\node_modules</strong>，如下图所示：</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-2.png" alt="1-2"></p>
-<p>环境变量 – 用户变量：编辑用户变量里面的<strong>Path</strong>，将原来的 npm 路径</p>
-<p>(“C:\Users\用户名\AppData\Roaming\npm”) 改为 <strong>D:\npm-install-package\node_global</strong> 如下图所示：</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-3.png" alt="1-3"></p>
-</li>
-<li><p>配置已经完成，可以全局安装一个包测试一下。</p>
-<p>cmd 下执行 <code>npm install webpack -g</code> 全局安装 <code>webpack</code> 如下图所示：</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-4.png" alt="1-4"></p>
-<p>安装完毕后查看我们的<code>node_cache</code> 和 <code>node_global</code> 文件夹，如下图所示：</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-5.png" alt="1-5"></p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-6.png" alt="1-6"></p>
-</li>
-<li><p>最后 cmd 任意目录下输入 <code>webpack -v</code> 检查是否安装成功，如下图所示：</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-7.png" alt="1-7"></p>
-</li>
-</ol>
-</li>
-<li><p>可能遇到的问题</p>
-<ol>
-<li><p>首先是 cnpm 的问题：有些兄弟之前为了装包快是自己配置了淘宝镜像的，但是当我们配置完了上面的内容会发现 cnpm 用不了了 <strong>cnpm 不是系统内部或外部命令</strong>。这是由于我们更改了环境变量导致的，因为原来的 cnpm 是装在了 “C:\Users\用户名\AppData\Roaming\npm” 里的，后来改变了该路径，所以系统找不到我们的 cnpm 很正常。</p>
-<p>此时你只需要重新执行 <code>npm install cnpm -g --registry=https://registry.npm.taobao.org</code> 就行了。执行以后在我们的 <code>node_global</code> 下可以看见如下图所示：</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-8.png" alt="1-8"></p>
-<p>并且可以在 <code>node_global\node_modules</code> 下看见我们安装的包，如下图所示：</p>
-<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-9.png" alt="1-9"></p>
-<p>同理之前其它的包有可能也用不了了，只需重新安装就好。</p>
-</li>
-</ol>
-</li>
-</ul>
-]]></content>
+<h2 id="一、Canvas基本使用"><a href="#一、Canvas基本使用" class="headerlink" title="一、Canvas基本使用"></a>一、Canvas基本使用</h2><h3 id="1-1、canvas-元素"><a href="#1-1、canvas-元素" class="headerlink" title="1.1、canvas 元素"></a>1.1、canvas 元素</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>canvas 只有两个可选的属性 <code>width</code>、<code>height</code>属性，默认<code>width = 300</code>、<code>height = 150</code>, 单位为<code>px</code>。也可以通过css属性设置画布的宽高，但是通过css设置的宽高必须和默认的画布宽高比例保持一致，否则画布会发生扭曲。所以最好不要使用css属性设置画布的宽高。</p>
+<p>由于canvas是HTML5新增的标签，所以在一些低版本的浏览器会出现兼容性问题（IE9以前的IE浏览器）。所以需要准备一定的替换内容。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line">    您的浏览器不支持 canvas 标签</span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>浏览器如果支持canvas标签，则不会执canvas标签内部的内容，如果不支持canvas标签，则会显示标签里面的内容。</p>
+<h3 id="2-2、渲染上下文-The-Rending-Context"><a href="#2-2、渲染上下文-The-Rending-Context" class="headerlink" title="2.2、渲染上下文(The Rending Context)"></a>2.2、渲染上下文(The Rending Context)</h3><p><code>&lt;canvas&gt;</code> 会创建一个固定大小的画布，会暴露一个或多个<strong>渲染上下文(画笔)</strong>，使用<strong>渲染上下文</strong>来绘制和处理要展示的内容。主要用到的是2D渲染上下文，除此之外还有3D渲染上下文。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelecter(<span class="string">'#canvas'</span>)</span><br><span class="line"><span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>) <span class="comment">// 获取 2d 上下文对象</span></span><br></pre></td></tr></table></figure>
+
+<p>同样的如果浏览器不支持canvas标签，那么在脚本中获取2d上下文对象会失败，甚至可能会报错影响正常的脚本执行，所以在js中获取上下文对象也需要做兼容性判断。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelecter(<span class="string">'#canvas'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (canvas.getContext) &#123;</span><br><span class="line">    <span class="keyword">const</span> ctx = canvas.getContext()</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// hack code ....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是一段基础的代码模板</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelecter(<span class="string">'#canvas'</span>)</span></span><br><span class="line"></span><br><span class="line">    if (canvas.getContext) &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span></span><br><span class="line"><span class="actionscript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// hack code...</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>npm</category>
-        <category>Node.js</category>
+        <category>canvas</category>
       </categories>
       <tags>
-        <tag>npm</tag>
-        <tag>Node.js</tag>
+        <tag>canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript的call、apply、bind函数的用法和区别</title>
+    <url>/2020/05/16/JavaScript%E7%9A%84call%E3%80%81apply%E3%80%81bind%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h2 id="一、用法"><a href="#一、用法" class="headerlink" title="一、用法"></a>一、用法</h2><blockquote>
+<p>这三个方法都是 JavaScript 函数原型链上的方法，每个函数都会自动继承这三个方法。</p>
+<p>总的来说三者都是用来改变<strong>this指向</strong>的，可以实现在一个对象的成员函数调用其它对象的成员函数或者成员变量。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> jack = &#123;</span><br><span class="line">    name:<span class="string">'jack'</span>,</span><br><span class="line">    age:<span class="string">'23'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tom = &#123;</span><br><span class="line">    name:<span class="string">'tom'</span>,</span><br><span class="line">    age:<span class="string">'20'</span>,</span><br><span class="line">    printMessage: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'This is '</span> + <span class="keyword">this</span>.name + <span class="string">',he is '</span> + <span class="keyword">this</span>.age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tom.printMessage.call(jack);	<span class="comment">// 结果：This is jack,he is 23.</span></span><br><span class="line">tom.printMessage.apply(jack);	<span class="comment">// 结果：This is jack,he is 23.</span></span><br><span class="line">tom.printMessage.bind(jack)();	<span class="comment">// 结果：This is jack,he is 23.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以看见printMessage内部的this指向被改变，不在指向调用它的对象tom，而是指向了call、apply、bind传入的参数：对象jack。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、区别"><a href="#二、区别" class="headerlink" title="二、区别"></a>二、区别</h2><blockquote>
+<p>这三个方法，在用途上没有什么区别，关键是在用法上存在区别。体现在他们三者的参数列表和返回值。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> jack = &#123;</span><br><span class="line">    name: <span class="string">'jack'</span>,</span><br><span class="line">    age: <span class="string">'23'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tom = &#123;</span><br><span class="line">    name: <span class="string">'tom'</span>,</span><br><span class="line">    age: <span class="string">'20'</span>,</span><br><span class="line">    printMessage: <span class="function"><span class="keyword">function</span>(<span class="params">from,to</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'This is '</span> + <span class="keyword">this</span>.name + <span class="string">',he is '</span> + <span class="keyword">this</span>.age + <span class="string">'from'</span> + <span class="keyword">from</span> </span><br><span class="line">                    + <span class="string">' to '</span> + to + <span class="string">'.'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// call方法，接受多个参数，第一个参数为执行函数的this值，其余参数将会按顺序赋值给执行函数的参数列表</span></span><br><span class="line">tom.printMessage.call(jack,<span class="string">'Beijin'</span>,<span class="string">'Shanghai'</span>);</span><br><span class="line"><span class="comment">// This is jack,he is 23 from Beijin to Shanghai</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* apply方法，接受两个参数，第一个参数为执行函数的this值，第二个参数是一个数组，数组元素将会按顺序赋值给执行函数的参数列表 */</span></span><br><span class="line">tom.printMessage.apply(jack,[<span class="string">'Beijin'</span>,<span class="string">'Shanghai'</span>]);</span><br><span class="line"><span class="comment">// This is jack,he is 23 from Beijin to Shanghai</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* bind方法，接受参数形式与call方法一致，但是返回的是一个新的函数，必须要手动调用一次才会执行。*/</span></span><br><span class="line">tom.printMessage.bind(jack,<span class="string">'Beijin'</span>,<span class="string">'Shanghai'</span>)();</span><br><span class="line"><span class="comment">// This is jack,he is 23 from Beijin to Shanghai</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript中i++和++i的区别</title>
+    <url>/2020/05/11/JavaScript%E4%B8%ADi-%E5%92%8C-i%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h2 id="一、-i-和-i-简单介绍"><a href="#一、-i-和-i-简单介绍" class="headerlink" title="一、++ i 和 i ++简单介绍"></a>一、++ i 和 i ++简单介绍</h2><p>++ 运算符又称自增运算符，功能为将操作数自加 1。</p>
+<p><strong>++ i 被称为前加加，++ 后面的变量执行自加操作，执行顺序为：先执行变量的自加操作，再引用变量的值。</strong></p>
+<p><strong>i ++ 被称为后加加，++ 前面的变量执行自加操作，执行顺序为：先引用变量的值，在执行自加操作。</strong></p>
+<p>在实际代码中，如果加加语句是一个独立的语句，那么两者是完全相同的。比如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a ++; <span class="comment">/*完全等价于*/</span>  ++ a;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++)&#123;...&#125;  <span class="comment">/*两者是完全等价的*/</span>  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span> ; ++ i)&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面两个示例 自增语句都是一个独立的语句，在这种情况下，<code>++ i</code>和<code>i ++</code>是完全等价的。</p>
+<h2 id="二、-i-和-i-使用时的区别"><a href="#二、-i-和-i-使用时的区别" class="headerlink" title="二、 ++ i 和 i ++ 使用时的区别"></a>二、 ++ i 和 i ++ 使用时的区别</h2><p>当加加语句不是一个独立的语句，只是某一个语句的一部分，二者就有区别了。</p>
+<ul>
+<li>i ++</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> j = i ++; <span class="comment">//此时完整的语句为 let j = i ++;先执行变量赋值，再执行 ++ 操作先j = i = 0 后i = 1;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>( i ++ &lt; <span class="number">10</span>); <span class="comment">// 此时i是从0开始第一次比较，先判断 i &lt; 10,然后变量i再执行加加操作;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>++ i</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> j = ++ i; <span class="comment">//此时完整的语句为 let j = ++ i;先执行 ++ 操作，再赋值变量：先i = 1后j = i = 1;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>( ++ i &lt; <span class="number">10</span>); <span class="comment">// 此时i是从1开始第一次比较,变量i先执行加加操作，再判断 i &lt; 10;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>operator</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>operator</tag>
       </tags>
   </entry>
   <entry>
@@ -287,39 +217,6 @@
       </tags>
   </entry>
   <entry>
-    <title>javascript获取元素的宽高的四种方式</title>
-    <url>/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>通过 <code>javascript</code> 获取元素的宽高是经常使用的，在此总结一些常见的方法，以及各个方法的区别，和适用场景。</p>
-</blockquote>
-<h2 id="一、dom-style-width-height"><a href="#一、dom-style-width-height" class="headerlink" title="一、dom.style.width/height"></a>一、dom.style.width/height</h2><p>通过 DOM 元素的 <code>style</code> 属性可以获取到元素的内联样式，如果元素的宽高是内联样式规定的可以采用这个方法。如果元素的宽高不是由内联样式指定，此方法无效。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"targt"</span> <span class="attr">style</span>=<span class="string">"width:100px;height:100px;background-color:thistle"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(dom.style.width); <span class="comment">// 100px</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>PS:此方法只能获取到元素的内联样式指定的宽高，如果是行内样式或者外联样式是获取不到的。</strong></p>
-<h2 id="二、dom-currentStyle-width-height"><a href="#二、dom-currentStyle-width-height" class="headerlink" title="二、dom.currentStyle.width/height"></a>二、dom.currentStyle.width/height</h2><p>获取的是元素经过浏览器渲染以后的<strong>及时宽高</strong>，比较第一种更全面不局限于内联样式。但是此方法只对<strong>IE浏览器</strong>有效。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(dom.currentStyle.width); <span class="comment">// IE浏览器下: 100px</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="三、window-getComputedStyle-dom-width-height"><a href="#三、window-getComputedStyle-dom-width-height" class="headerlink" title="三、window.getComputedStyle(dom).width/height"></a>三、window.getComputedStyle(dom).width/height</h2><p>这个原理跟第二种一样，是获取元素渲染以后的<strong>及时宽高</strong>，此方法适用的是标准浏览器<strong>Firefox、chrome</strong>等。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> width = <span class="built_in">window</span>.getComputedStyle(dom).width;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(width); <span class="comment">// 标准浏览器下: 100px;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="四、dom-getBoundingClientRect-width-height"><a href="#四、dom-getBoundingClientRect-width-height" class="headerlink" title="四、dom.getBoundingClientRect().width/height"></a>四、dom.getBoundingClientRect().width/height</h2><p><code>getBoundingClientRect()</code>这个api其实本事不是专门为了获取元素宽高而使用的，它主要是获取浏览器及时运行完以后一个dom元素的绝对位置信息，但是包含了元素宽高。返回了四个主要内容<code>top</code>、<code>left</code>、<code>width</code>、<code>height</code>。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> width = dom.getBoundingClientRect().width;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(width); <span class="comment">// 100; 注意它只返回数值 100 而不是完整的 100px;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>getBoundingClientRect()</code>完整返回值如下图所示：</p>
-<p><img src="/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/getBoundingClientRect%E8%BF%94%E5%9B%9E%E5%80%BC.png" alt="getBoundingClientRect返回值"></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>css盒模型</title>
     <url>/2020/05/25/css%E7%9B%92%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<blockquote>
@@ -371,252 +268,74 @@
       </tags>
   </entry>
   <entry>
-    <title>DOM事件</title>
-    <url>/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<h2 id="DOM事件的级别"><a href="#DOM事件的级别" class="headerlink" title="DOM事件的级别"></a>DOM事件的级别</h2><ul>
-<li>DOM0    <code>element.onclick = function(){}</code></li>
-<li>DOM2    <code>element.addEventListener(&#39;click&#39;,function(){},false)</code></li>
-<li>DOM3    <code>element.addEventListener(&#39;keyup&#39;,function(){},false)</code> </li>
-</ul>
-<p>DOM3 和 DOM2 相比只是添加了更多的事件类型，这里没有DOM1是因为DOM1没有实质性的内容。</p>
-<h2 id="DOM事件模型"><a href="#DOM事件模型" class="headerlink" title="DOM事件模型"></a>DOM事件模型</h2><blockquote>
-<p>事件模型有两个部分，捕获和冒泡。</p>
-</blockquote>
-<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.png" alt="事件模型"></p>
-<h3 id="1-何为DOM"><a href="#1-何为DOM" class="headerlink" title="1.何为DOM"></a>1.何为DOM</h3><p>DOM是“Document Object  Model”的缩写，中文译为“文档对象模型”。它是一种跨平台、跨语言的编程接口，将HTML，XHTML，XML文档映射成树形结构，树的每一个节点都是一个对象。正因如此，面向对象的编程语言（如javascript）可以通过DOM对HTML，XHTML，XML文档进行操作。对于HTML文档来说，它的根结点为document对象，HTML元素为element对象，HTML元素的属性为attr对象。</p>
-<h3 id="2-何为DOM事件及如何对其作出响应"><a href="#2-何为DOM事件及如何对其作出响应" class="headerlink" title="2.何为DOM事件及如何对其作出响应"></a>2.何为DOM事件及如何对其作出响应</h3><p>在浏览网页时，我们常常需要页面对用户的操作作出响应，比如点击“阅读全文”后我们期望页面展示被折叠的文本，按下回车键后浏览器提交已填好的表单。用户的各种操作都是“事件”。事件都是在对象上发生的，可能是DOM对象、BOM对象，等等。事件发生后，对象可能会作出响应，也有可能“无动于衷”。我们希望DOM元素对事件作出响应，一般而言有两种方法：<br><strong>i.事件属性</strong><br>事件属性是一种特殊的属性，它的值规定了对应事件发生时需要执行的javascript脚本。例：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"console.log('button clicked!')"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>上面为button标签添加了事件属性onclick，其值为”console.log(‘button clicked!’)”，它规定了当元素被鼠标点击时，控制台输出’button clicked’。<br><strong>ii.addEventListener()方法</strong><br>EventTarget.addEventListener()方法将指定的监听器注册到EventTarget上，当该对象触发指定的事件时，指定的回调函数就会被执行。EventTarget可以是element对象,document对象或者任何其他支持事件的对象。例：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--html文件中--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'mybutton'</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> mybutton=<span class="built_in">document</span>.getElementById(<span class="string">'mybutton'</span>);</span></span><br><span class="line"><span class="javascript">	mybutton.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'button clicked!'</span>);&#125;);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>上例为button元素注册了click事件的监听器，并规定事件时触发控制台输出’button clicked’。</p>
-<h3 id="3-DOM事件模型"><a href="#3-DOM事件模型" class="headerlink" title="3.DOM事件模型"></a>3.DOM事件模型</h3><p>在讲解DOM事件模型前，再用一个例子作为引入。请看下面的html文件：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Event Model<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">div</span>&#123;<span class="attribute">position</span>: absolute;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#outer</span>&#123;</span></span><br><span class="line">        top: 100px;</span><br><span class="line">        left: 100px;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 400px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#aff</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#inner1</span>,<span class="selector-id">#inner2</span>&#123;</span></span><br><span class="line">        top: 50px;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 300px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#f9a</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#inner1</span>&#123;<span class="attribute">left</span>: <span class="number">50px</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#inner2</span>&#123;<span class="attribute">left</span>: <span class="number">350px</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#core</span>&#123;</span></span><br><span class="line">        left: 50px;</span><br><span class="line">        top: 50px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 150px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#f50</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'outer'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'inner1'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'inner2'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'core'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这里为id分别为outer,inner1,inner2,core的4个元素定义了事件属性，元素被点击后将在控制台输出它的id。现在问题来了：<br>如果我点击core元素，控制台将会输出什么？<br>点击core元素时，由于core元素包含在inner2元素里，inner2元素同样被点击了;同理，inner2元素包含在outer元素里，那么outer元素也被点击了。这种情况下哪一个元素的click事件将会被触发,或者说三者都被触发？如果说三者都被触发，那么又是以怎样的顺序被触发？<br>我在火狐浏览器做了一次实验，控制台输出结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">core</span><br><span class="line">inner2</span><br><span class="line">outer</span><br></pre></td></tr></table></figure>
-
-<p>也就是说，三者的事件都被触发了，且是“由内向外”触发的。<br>下面我们再做一个有趣的实验：我们将上面的html文件再做一个小小的改动，将core元素的样式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">left: 50px;</span><br></pre></td></tr></table></figure>
-
-<p>改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">left: -250px;</span><br></pre></td></tr></table></figure>
-
-<p>此时观察页面我们会发现，尽量core是inner2的子节点，但由于我们定义了“怪异”的样式，它跑到了inner1里面。现在我们再次用鼠标点击core，观察控制台的输出：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">core</span><br><span class="line">inner2</span><br><span class="line">outer</span><br></pre></td></tr></table></figure>
-
-<p>和刚才的结果一模一样！尽管表面上inner1似乎被点击了，但它的click事件并没有触发;反而是看似未被点击的inner2元素的click事件被触发了。仿佛core元素的click事件被触发后，click事件一层一层向上“传播”给了父节点。<br>为了解释刚才的实验结果，是时候开始讲解DOM事件模型了。<br>当一个事件发生时，事件会在DOM树中进行传播。传播分为两个阶段：</p>
-<ul>
-<li><p>捕获阶段<br>在此阶段，事件从根结点（即document结点）开始向下传播，直到事件源所在元素。</p>
-</li>
-<li><p>冒泡阶段<br>在此阶段，事件从事件源开始向上传播，直到根结点。</p>
-<p>拿刚才的例子来说，事件传播的顺序为：<br>document捕获-&gt;html捕获-&gt;body捕获-&gt;outer捕获-&gt;inner2捕获-&gt;core捕获-&gt;core冒泡-&gt;inner2冒泡-&gt;outer冒泡-&gt;html冒泡-&gt;document冒泡</p>
-<p>对于事件属性，默认在冒泡阶段触发事件。如果用addEventListener()方法注册监听器，则可以指定在捕获阶段还是冒泡阶段触发事件：如果最后一个参数为false（默认值），则在冒泡阶段触发事件;如果为true，则在捕获阶段触发事件。</p>
-<p>一般来说，我们推荐采用addEventListener()方法来注册监听器，而尽量不用事件属性。因为事件属性不利于行为与结构的分离，使代码难以维护。</p>
-</li>
-</ul>
-<h2 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h2><p>一个完整的事件流包含三个阶段：捕获阶段（Capturing Phase）、事件处理阶段（Target Phase）、事件冒泡阶段（Bubbling Phase）。</p>
-<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81.jpg" alt="DOM事件流"></p>
-<p>从用户触发元素到浏览器执行响应事件这整个过程，就是事件流。</p>
-<h2 id="DOM事件捕获的具体流程"><a href="#DOM事件捕获的具体流程" class="headerlink" title="DOM事件捕获的具体流程"></a>DOM事件捕获的具体流程</h2><p>见上图 Capturing Phase 阶段。</p>
-<h2 id="Event对象的常见应用"><a href="#Event对象的常见应用" class="headerlink" title="Event对象的常见应用"></a>Event对象的常见应用</h2><ul>
-<li><p><strong>event.preventDefault()</strong></p>
-<p>阻止事件的默认行为，例如<code>&lt;a&gt;&lt;/a&gt;</code>标签的默认点击行为是跳转到新的页面，使用<code>event.preventDefault()</code>可以阻止这种跳转行为。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"target"</span> <span class="attr">href</span>=<span class="string">"www.baidu.com"</span>&gt;</span>跳转到百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> target = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>);</span></span><br><span class="line"><span class="actionscript">    target.addEventListener(<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        event.preventDefault(); <span class="comment">//阻止跳转行为</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>event.stopPropagation()</strong></p>
-<p>阻止冒泡行为：点击子元素时不会出发父元素的点击事件。</p>
-</li>
-<li><p><strong>event.stopImmediatePropagation()</strong></p>
-<p>当一个DOM元素绑定了多个响应事件后，可以通过此方法阻止指定响应事件的执行。</p>
-</li>
-<li><p><strong>event.currentTarget</strong></p>
-<p>就是指注册事件时所指向的元素。与<code>event.target</code>的区别，举例说明：</p>
-<p>父级元素绑定了一个点击事件，在父级元素里面还有一个子元素，点击子元素肯定是会触发父元素的点击事件的，此时<code>event.currentTarget</code>就是父元素而e<code>event.target</code>则是子元素。</p>
-<p>具体的说就是<code>event.currentTarget</code>是注册事件时所指向的元素，而<code>event.target</code>是响应事件的最小子元素，也就是最深层级的触发事件的元素。这也是事件委托的原理。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.parent</span>&#123;</span></span><br><span class="line">            width: 200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            background-color: thistle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">        <span class="selector-class">.child</span>&#123;</span></span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            background-color: skyblue;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> par = <span class="built_in">document</span>.querySelector(<span class="string">".parent"</span>);</span></span><br><span class="line"><span class="actionscript">    par.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">    	<span class="built_in">console</span>.log(<span class="string">'currentTarget'</span>, event.currentTarget);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">'target'</span>,event.target);</span></span><br><span class="line">    &#125;)</span><br><span class="line"> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>执行结果如下图所示：</p>
-<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/target&currentTarget.png" alt="target&amp;currentTarget"></p>
-</li>
-<li><p><strong>event.target</strong></p>
-<p><strong>事件委托</strong>时用到的最多，当一个父级元素下面的子元素非常多，并且子元素都有各自的点击事件，普通做法就是一个一个添加响应事件，这种做法并不是理想的做法，浪费大量的内存，以及过多的事件注册会导致用户体验很差。</p>
-<p>此时我们就可以采用事件委托的方式，将所有子元素的事件都绑定在父级元素上，然后通过<code>event.target</code>判断具体是点击的哪一个子元素，然后执行相应的事件处理函数即可。</p>
-<p><a href="https://wenbin-zhang.github.io/2020/05/26/事件委托/" target="_blank" rel="noopener">事件委托详情参见&gt;&gt;</a></p>
-</li>
-</ul>
-<h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 自定义一个Event对象</span></span><br><span class="line"><span class="keyword">let</span> eve = <span class="keyword">new</span> Event(<span class="string">'custome'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定自定义事件</span></span><br><span class="line">dom.addEventListener(<span class="string">'custome'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'custome'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行自定义事件</span></span><br><span class="line">dom.dispatchEvent(eve);</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>事件委托</title>
-    <url>/2020/05/26/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</url>
+    <title>javascript获取元素的宽高的四种方式</title>
+    <url>/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
-<p>事件委托是开发中会经常用到的一种事件优化方式，可以有效的减少代码量，减少内存的占用。</p>
+<p>通过 <code>javascript</code> 获取元素的宽高是经常使用的，在此总结一些常见的方法，以及各个方法的区别，和适用场景。</p>
 </blockquote>
-<p>场景：例如一个无序列表<code>ul</code>拥有多个子元素<code>li</code>，每个<code>li</code>点击过后要执行的事件响应函数是不一样的，普通做法就是一个一个绑定事件，如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    ul&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">list-style</span><span class="selector-pseudo">:none</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    ul li&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:30px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">float</span><span class="selector-pseudo">:left</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span><span class="selector-pseudo">:thitle</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">margin-left</span><span class="selector-pseudo">:10px</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">"ul"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> li_a = <span class="built_in">document</span>.querySelector(<span class="string">"#a"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> li_b = <span class="built_in">document</span>.querySelector(<span class="string">"#b"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> li_c = <span class="built_in">document</span>.querySelector(<span class="string">"#c"</span>);</span></span><br><span class="line">    </span><br><span class="line"><span class="actionscript">    li_a.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="actionscript">    li_b.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">        ....</span><br><span class="line">    &#125;)</span><br><span class="line">        ....</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="一、dom-style-width-height"><a href="#一、dom-style-width-height" class="headerlink" title="一、dom.style.width/height"></a>一、dom.style.width/height</h2><p>通过 DOM 元素的 <code>style</code> 属性可以获取到元素的内联样式，如果元素的宽高是内联样式规定的可以采用这个方法。如果元素的宽高不是由内联样式指定，此方法无效。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"targt"</span> <span class="attr">style</span>=<span class="string">"width:100px;height:100px;background-color:thistle"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(dom.style.width); <span class="comment">// 100px</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>上面就是普通写法，可以看出来代码相当的重复啰嗦，此时采用事件委托的方式，将点击事件直接绑定到父元素身上，再通过判断具体点击的是哪一个子元素，可以提高效率，并且减轻代码量。这里需要用到<code>event.target</code>属性，<a href="https://wenbin-zhang.github.io/2020/05/26/DOM事件/" target="_blank" rel="noopener">event.target详情参见&gt;&gt;</a></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// html 部分和上面一样，省略</span></span><br><span class="line"><span class="keyword">let</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">"ul"</span>);</span><br><span class="line">ul.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(event.target)&#123;</span><br><span class="line">       <span class="keyword">if</span>(event.target.id == <span class="string">"a"</span>)&#123;</span><br><span class="line">       <span class="comment">// do li_a的事件处理函数；</span></span><br><span class="line">   	   &#125;<span class="keyword">else</span> <span class="keyword">if</span>(event.target.id == <span class="string">"b"</span>)&#123;</span><br><span class="line">           <span class="comment">// do li_b的事件处理函数</span></span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           <span class="comment">// ....</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;   </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>PS:此方法只能获取到元素的内联样式指定的宽高，如果是行内样式或者外联样式是获取不到的。</strong></p>
+<h2 id="二、dom-currentStyle-width-height"><a href="#二、dom-currentStyle-width-height" class="headerlink" title="二、dom.currentStyle.width/height"></a>二、dom.currentStyle.width/height</h2><p>获取的是元素经过浏览器渲染以后的<strong>及时宽高</strong>，比较第一种更全面不局限于内联样式。但是此方法只对<strong>IE浏览器</strong>有效。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(dom.currentStyle.width); <span class="comment">// IE浏览器下: 100px</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>这样可有可以有效的减少事件的绑定，可以提高js代码的执行效率。</p>
+
+
+<h2 id="三、window-getComputedStyle-dom-width-height"><a href="#三、window-getComputedStyle-dom-width-height" class="headerlink" title="三、window.getComputedStyle(dom).width/height"></a>三、window.getComputedStyle(dom).width/height</h2><p>这个原理跟第二种一样，是获取元素渲染以后的<strong>及时宽高</strong>，此方法适用的是标准浏览器<strong>Firefox、chrome</strong>等。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> width = <span class="built_in">window</span>.getComputedStyle(dom).width;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(width); <span class="comment">// 标准浏览器下: 100px;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="四、dom-getBoundingClientRect-width-height"><a href="#四、dom-getBoundingClientRect-width-height" class="headerlink" title="四、dom.getBoundingClientRect().width/height"></a>四、dom.getBoundingClientRect().width/height</h2><p><code>getBoundingClientRect()</code>这个api其实本事不是专门为了获取元素宽高而使用的，它主要是获取浏览器及时运行完以后一个dom元素的绝对位置信息，但是包含了元素宽高。返回了四个主要内容<code>top</code>、<code>left</code>、<code>width</code>、<code>height</code>。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> width = dom.getBoundingClientRect().width;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(width); <span class="comment">// 100; 注意它只返回数值 100 而不是完整的 100px;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>getBoundingClientRect()</code>完整返回值如下图所示：</p>
+<p><img src="/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/getBoundingClientRect%E8%BF%94%E5%9B%9E%E5%80%BC.png" alt="getBoundingClientRect返回值"></p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
-        <category>DOM</category>
       </categories>
       <tags>
         <tag>JavaScript</tag>
-        <tag>DOM</tag>
       </tags>
   </entry>
   <entry>
-    <title>浏览器渲染机制</title>
-    <url>/2020/05/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<h2 id="一、什么是-DOCTYPE-及作用"><a href="#一、什么是-DOCTYPE-及作用" class="headerlink" title="一、什么是 DOCTYPE 及作用"></a>一、什么是 DOCTYPE 及作用</h2><blockquote>
-<p>DOCTYPE标签是一种标准通用标记语言的文档类型声明，它的目的是要告诉<a href="https://baike.baidu.com/item/标准通用标记语言/6805073" target="_blank" rel="noopener">标准通用标记语言</a>解析器，它应该使用什么样的文档类型定义（<a href="https://baike.baidu.com/item/DTD" target="_blank" rel="noopener">DTD</a>）来解析文档。</p>
-<p>DTD：document type definition，文档类型定义，是一系列的语法规则。会告诉浏览器以何种协议来解析文档，例如XML和HTML。</p>
+    <title>Vue-cli@3中使用bootstrap</title>
+    <url>/2020/05/08/vue-import-bootstrap/</url>
+    <content><![CDATA[<h1 id="Vue-cli-3创建的项目中如何使用Bootstrap"><a href="#Vue-cli-3创建的项目中如何使用Bootstrap" class="headerlink" title="Vue-cli@3创建的项目中如何使用Bootstrap"></a>Vue-cli@3创建的项目中如何使用Bootstrap</h1><h2 id="一、安装所需包"><a href="#一、安装所需包" class="headerlink" title="一、安装所需包"></a>一、安装所需包</h2><ol>
+<li><p>Bootstrap 是基于 jQuery 开发的，所以先安装 jQuery。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install jquery -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Popper.js, BootStrap 内部有些嵌套组件，是依靠 Popper.js 来实现定位的。非必须安装如果你的项目会用到 BootStrap 中的类似于 下拉列表这样的组件，建议先提前安装 popper.js,否则可能报错。关于popper.js的介绍以及具体介绍如下。</p>
+<blockquote>
+<p><em>Popper.js是一款功能强大的JS定位引擎。</em>  <a href="https://blog.csdn.net/jhzhahuaiyu/article/details/90213582" target="_blank" rel="noopener">站在原型链顶端的男人的博客</a></p>
 </blockquote>
-<p>对于前端来说作用就是<strong>告诉浏览器以何种DTD，以什么标准来解析我们的文档也就是我们的html文件。</strong></p>
-<h3 id="常见的-DOCTYPE"><a href="#常见的-DOCTYPE" class="headerlink" title="常见的 DOCTYPE"></a>常见的 DOCTYPE</h3><ul>
-<li><p>HTML 5</p>
-<p><code>&lt;!DOCTYPE html&gt;</code> ，这是目前最主要的。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install popper.js -s</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>HTML 4.01 Strict 4.01版本的严格模式DTD，包含所有的HTML元素和属性，但是不包括展示性和已经弃用的元素 （比如 font）。这种模式下使用已经废弃过的元素，浏览器会报错。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD HTML 4.01//EN"</span> <span class="meta-string">"http://www.w3.org/TR/html4/strict.dtd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>HTML 4.01 Transitional 4.01版本的传统模式DTD，包含所有的HTML元素和属性，包括展示性和已经弃用的元素 （比如 font）。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="meta-string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
+<li><p>安装 BootStrap 包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install bootstrap@3 -s</span><br></pre></td></tr></table></figure>
 
 
 
 </li>
+</ol>
+<h2 id="二、配置main-js-全局引入-bootstrap-和-jquery"><a href="#二、配置main-js-全局引入-bootstrap-和-jquery" class="headerlink" title="二、配置main.js 全局引入 bootstrap 和 jquery"></a>二、配置main.js 全局引入 bootstrap 和 jquery</h2><p><img src="/2020/05/08/vue-import-bootstrap/2-1.png" alt="2-1"></p>
+<p><em>注意导入时，<code>import $ from &#39;jquery&#39;</code> 要写在最前面。否则可能报错</em></p>
+<h2 id="三、配置-vue-config-js"><a href="#三、配置-vue-config-js" class="headerlink" title="三、配置 vue.config.js"></a>三、配置 vue.config.js</h2><ul>
+<li>在 vue-cli@3搭建的 vue 项目默认是不没有该文件的，需要在 package.json 的同级目录下手动创建。具体代码如下：</li>
 </ul>
-<h2 id="二、浏览器渲染过程"><a href="#二、浏览器渲染过程" class="headerlink" title="二、浏览器渲染过程"></a>二、浏览器渲染过程</h2><p><img src="/2020/05/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B.png" alt="浏览器渲染过程"></p>
-<ol>
-<li>HTML 解释器解析 HTML 文件生成对应的DOM树，这也就是我们平常用js操作的DOM。同时CSS解释器解析CSS文件，生成相应的样式规则。</li>
-<li>DOM Tree 和 Style Rules 经过结合生成渲染树，浏览器通过 Layout 计算渲染树中的每一个元素的渲染位置。</li>
-<li>得出每一个元素的渲染位置以后，就开始绘制，然后显示。</li>
-</ol>
-<h2 id="三、Reflow（重排）"><a href="#三、Reflow（重排）" class="headerlink" title="三、Reflow（重排）"></a>三、Reflow（重排）</h2><blockquote>
-<p>DOM结构中的各个元素都有自己的盒子，这些都需要浏览器根据各种样式来计算并根据计算结果将元素放到它该出现的位置，这个过程我们称之为reflow。</p>
-</blockquote>
-<p>触发Reflow的条件:</p>
-<ol>
-<li>增加，删除，修改DOM节点时，会导致Reflow或Repaint。</li>
-<li>移动DOM的位置时，或者在元素上添加动画。</li>
-<li>修改CSS样式时。</li>
-<li>当Resize窗口的时候（移动端没有这个问题），或者是滚动页面的时候。</li>
-<li>修改网页的默认字体时（不要轻易修改网页的默认字体）。</li>
-</ol>
-<h2 id="四、Repaint（重绘）"><a href="#四、Repaint（重绘）" class="headerlink" title="四、Repaint（重绘）"></a>四、Repaint（重绘）</h2><blockquote>
-<p>当各种盒子的位置，大小以及其他属性，例如颜色、字体大小等都确定下来后，浏览器于是把这些元素都按照各自的特性绘制了一遍，于是页面的内容出现了，这个过程称之为repaint。</p>
-</blockquote>
-<p>触发Repaint的条件:</p>
-<ol>
-<li>DOM改动</li>
-<li>CSS改动</li>
-</ol>
-<p>ps：总的来说导致repaint的原因就是上述两点，但具体的原因有非常多，总之页面出现了变化，肯定就导致了repaint。</p>
-<p>频繁的 Repaint 会影响整个网页的性能和流畅度。</p>
-<p>例如动态添加一百个div，那么正常情况下就会不断的repaint，为了减轻这种影响我们可以使用</p>
-<p><code>document.createDocumentFragment()</code>的方式将所有要添加的元素放入fragment片段中，最后统一插入document，这样就只会渲染一次。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> root = <span class="built_in">document</span>.querySelector(<span class="string">'dom元素'</span>);</span><br><span class="line"><span class="keyword">let</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    div.innerHTML = <span class="string">'我是第'</span> + i + <span class="string">'个div'</span>;</span><br><span class="line">    fragment.appendChild(div);</span><br><span class="line">&#125;</span><br><span class="line">root.appendChild(fragment);</span><br></pre></td></tr></table></figure>
-
+<p><img src="/2020/05/08/vue-import-bootstrap/3-1.png" alt="3-1"></p>
+<hr>
+<p><em>如果一切顺利，便可以使用了。</em></p>
 ]]></content>
       <categories>
-        <category>html</category>
+        <category>Vue</category>
+        <category>Bootstrap</category>
       </categories>
       <tags>
-        <tag>html</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>移动端页面和pc端页面的区别</title>
-    <url>/2020/06/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%92%8Cpc%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<blockquote>
-<p>本文转载自:<a href="https://www.cnblogs.com/mdr86553/p/12367618.html" target="_blank" rel="noopener">一梦梦的个人博客</a></p>
-</blockquote>
-<h2 id="一、使用体验上"><a href="#一、使用体验上" class="headerlink" title="一、使用体验上"></a>一、使用体验上</h2><ol>
-<li><p>操作方式</p>
-<p>PC端的操作方式与移动端已经有了明显的差别，PC端使用鼠标操作，操作包含滑动、左击、右击、双击操作，操作相对来说单一，交互效果相对较少，而对于手机端来说，包含手指操作点击、滑动、双击、双指放大、双指缩小、五指收缩和苹果最新的3Dtouch按压力度，除了手指操作外还可以配合传感器完成摇一摇、陀悬仪感应灯操作方式，操作方式更加的丰富，通过这些丰富的操作可设计不同新颖吸引人的交互互动设计。</p>
-</li>
-<li><p>屏幕尺寸</p>
-<p>随着时间的推移，移动端的设备屏幕逐渐增大，但是你再大也是大不过PC电脑屏幕的，这是毋庸置疑的。PC端屏幕大，所以他的视觉范围更广，可设计的地方更多，设计性更强，相对来说容错度更高一些有一些小的纰漏不容易被发现。移动端设备相对来说屏幕较小，操作局限性大，在设计上可用空间显得尤为珍贵，在小小的屏幕上使用粗大的手指操作也需要在设计中避免原件过小过近。</p>
-</li>
-<li><p>网络环境</p>
-<p>当下不管是移动端还是PC端都离不开网络，PC端设备连接网络更加稳定，而移动端可能遇到信号问题导致网络环境不佳，出现网速差甚至断网的问题，这就需要产品经理在设计中充分考虑网络问题，更好的设计相应的解决方案。</p>
-</li>
-<li><p>传感器</p>
-<p>移动端设备重磅武器来袭，完善的传感器是PC端设备望尘莫及的，压力、方向、重力、GPS、NFC、指纹识别、3Dtouch、陀螺仪等等等等，就是因为这些传感器的存在才使得我们的生活更加丰富多彩，有了他们你才能玩赛车游戏才能摇妹子才能统计每天走了多少步，产品在设计中巧妙地使用传感器能让产品添姿加彩。</p>
-</li>
-<li><p>使用场景与使用时间</p>
-<p>这两块我们一起来说，因为PC端设备的使用场景多为在家或者学校公司等一些固定的场景，所以其使用时间偏向于持续化，在一个特定的时间段内持续使用，而移动端设备不受局限可以吃饭用、坐车用、拉屎用、无聊打发时间用、躺着用、坐着用、倒立着用都没人管你，随时随地想用就用，所以他的使用时间更加灵活，时间更加碎片化，所以在操作上更偏向于短时间内可完成的。</p>
-</li>
-<li><p>软件迭代时间以及更新频次</p>
-<p>你有没有很久都没有更新你的PC软件了，但是你的手机软件确实永远保持着最新的状态，这就是他们两者的区别，对于移动端他的软件迭代时间较短，用户更新率较高而PC端软件迭代时间较长，除非出于需要用户一般不会主动更新软件，软件更新率低。</p>
-</li>
-<li><p>续航</p>
-<p>除了笔记本PC端台式机只要有点他就从没有考虑过这个问题，移动端设备则需要考虑。</p>
-</li>
-</ol>
-<h2 id="二、在功能设计上的区别"><a href="#二、在功能设计上的区别" class="headerlink" title="二、在功能设计上的区别"></a>二、在功能设计上的区别</h2><p>你有没有在移动端看到过下拉菜单，有没有在PC端看到过滑动解锁，相同的功能在不同的设备上有其自己的展现形式，下面我们罗列一二，因为例子实在太多就不一一展开。</p>
-<ol>
-<li><p>文字输入</p>
-<p>在文字输入中，PC端一般使用文本框解决。<br>而在移动端中因为手机屏幕尺寸以及UI风格的原因我们基本没有在手机上看到过PC端这样的展现形式，而是采用另起一页输入或者文字后直接输入方式，这就是各个平台根据自身特性的展现形式。</p>
-</li>
-<li><p>内容选择</p>
-<p>在PC端中，一般使用下拉菜单或者是单选按钮形式完成内容选择。<br>而在手机端由于手指的操作便捷性考虑一般不采用PC端的选择方式而是通过列表选择或者其他交互来完成。<br>这样的设计点不胜枚举，就不一一展开了，还需要在日常生活工作中多多留意，切不可把PC端的设计模型照搬到移动端。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>others</category>
-      </categories>
-      <tags>
-        <tag>others</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>new操作符到底干了什么.md</title>
-    <url>/2020/06/23/new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%88%B0%E5%BA%95%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88-md/</url>
-    <content><![CDATA[<p>代码实例</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> Func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//....    </span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> func = <span class="keyword">new</span> Func();</span><br></pre></td></tr></table></figure>
-
-<p>new 一共经历了四个阶段</p>
-<ol>
-<li><p>创建一个空对象</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置原型链</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">obj.__proto__ = Func.prototype;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>让 Func 中的 <code>this</code> 指向 obj, 并执行 Func 的函数体</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> result = Func.call(obj);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>判断Func返回值的类型：</p>
-<p>如果构造函数没有 return 或者 return 的是基本类型，则返回this；如果 return 一个引用类型，则返回这个引用类型。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> result === <span class="string">'object'</span>)&#123;</span><br><span class="line">	func = result;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	func = obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//eg:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Func1</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Func2</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'string or number or boolean'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Func3</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'123'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> func1 = <span class="keyword">new</span> Func1(<span class="string">'Tom'</span>);	<span class="comment">// func1-&gt; Func1:&#123;name:'Tom'&#125;</span></span><br><span class="line"><span class="keyword">let</span> func2 = <span class="keyword">new</span> Func2(<span class="string">'Jack'</span>);	<span class="comment">// func2 -&gt; Func2:&#123;name:'Jack'&#125;</span></span><br><span class="line"><span class="keyword">let</span> func3 = <span class="keyword">new</span> Func3(<span class="string">'Bob'</span>);	<span class="comment">// func3 -&gt; String:&#123;0:'B',1:'o',2:'b'&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
+        <tag>Vue</tag>
+        <tag>Bootstrap</tag>
       </tags>
   </entry>
   <entry>
@@ -710,6 +429,152 @@
       </tags>
   </entry>
   <entry>
+    <title>事件委托</title>
+    <url>/2020/05/26/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</url>
+    <content><![CDATA[<blockquote>
+<p>事件委托是开发中会经常用到的一种事件优化方式，可以有效的减少代码量，减少内存的占用。</p>
+</blockquote>
+<p>场景：例如一个无序列表<code>ul</code>拥有多个子元素<code>li</code>，每个<code>li</code>点击过后要执行的事件响应函数是不一样的，普通做法就是一个一个绑定事件，如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    ul&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">list-style</span><span class="selector-pseudo">:none</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    ul li&#123;</span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:30px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">float</span><span class="selector-pseudo">:left</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span><span class="selector-pseudo">:thitle</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">margin-left</span><span class="selector-pseudo">:10px</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">"ul"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> li_a = <span class="built_in">document</span>.querySelector(<span class="string">"#a"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> li_b = <span class="built_in">document</span>.querySelector(<span class="string">"#b"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> li_c = <span class="built_in">document</span>.querySelector(<span class="string">"#c"</span>);</span></span><br><span class="line">    </span><br><span class="line"><span class="actionscript">    li_a.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="actionscript">    li_b.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">        ....</span><br><span class="line">    &#125;)</span><br><span class="line">        ....</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面就是普通写法，可以看出来代码相当的重复啰嗦，此时采用事件委托的方式，将点击事件直接绑定到父元素身上，再通过判断具体点击的是哪一个子元素，可以提高效率，并且减轻代码量。这里需要用到<code>event.target</code>属性，<a href="https://wenbin-zhang.github.io/2020/05/26/DOM事件/" target="_blank" rel="noopener">event.target详情参见&gt;&gt;</a></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// html 部分和上面一样，省略</span></span><br><span class="line"><span class="keyword">let</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">"ul"</span>);</span><br><span class="line">ul.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(event.target)&#123;</span><br><span class="line">       <span class="keyword">if</span>(event.target.id == <span class="string">"a"</span>)&#123;</span><br><span class="line">       <span class="comment">// do li_a的事件处理函数；</span></span><br><span class="line">   	   &#125;<span class="keyword">else</span> <span class="keyword">if</span>(event.target.id == <span class="string">"b"</span>)&#123;</span><br><span class="line">           <span class="comment">// do li_b的事件处理函数</span></span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           <span class="comment">// ....</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;   </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这样可有可以有效的减少事件的绑定，可以提高js代码的执行效率。</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>DOM</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端单位学习笔记</title>
+    <url>/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="前端单位简单分析与对比"><a href="#前端单位简单分析与对比" class="headerlink" title="前端单位简单分析与对比"></a>前端单位简单分析与对比</h1><blockquote>
+<p>分享者：张文斌</p>
+<p>时间：2020/09/09</p>
+</blockquote>
+<h2 id="一、讲在前面"><a href="#一、讲在前面" class="headerlink" title="一、讲在前面"></a>一、讲在前面</h2><h3 id="1、物理像素"><a href="#1、物理像素" class="headerlink" title="1、物理像素"></a>1、物理像素</h3><ul>
+<li><p>定义：设备像素（物理像素），顾名思义，显示屏是由一个个物理像素点组成的，通过控制每个像素点的颜色，使屏幕显示出不同的图像，屏幕从工厂出来那天起，它上面的物理像素点就固定不变了，单位pt（真正意义上的绝对单位）。</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/D:%5Cblog%5Csource_posts%5C%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0-1.png" alt="物理像素-1"></p>
+</li>
+<li><p>示意：以早期LCD显示器为例3个液晶为一组，通过红绿蓝三原色不同比例的光混合，可以产生我们需要的特定颜色。这样的一组液晶作为显示器的最小元素认为是一个像素点（物理像素）。</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0-2.jpg" alt="物理像素-2"></p>
+</li>
+</ul>
+<h3 id="2、逻辑像素"><a href="#2、逻辑像素" class="headerlink" title="2、逻辑像素"></a>2、逻辑像素</h3><ul>
+<li><p>定义：设备独立像素，也称为逻辑像素，简称`DIP:Device independent Pixel。早期的显示器是没有逻辑像素这个概念的，或者说当时物理像素和逻辑像素是1:1的关系。即我们操作的1像素确实是对应的1物理像素，但是自从Retina屏诞生以后这两者的关系便区分开来，1逻辑像素等于n物理像素。两者之间有一个换算方法，要根据设备的dpr结合换算公式换算。（这里就不展开了）<br>$$<br>逻辑像素 = css像素 = 设备独立像素<br>$$</p>
+</li>
+<li><p>示意：设备像素比(dpr) 是指在<strong>移动开发</strong>中1个css像素占用多少设备像素，如2代表1个css像素用2x2个设备像素来绘制。设备像素比(dpr)，公式为<code>1px = (dpr)^2 * 1dp</code>，可以理解为1px由多少个设备像素组成；</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0%E4%B8%8E%E9%80%BB%E8%BE%91%E5%83%8F%E7%B4%A0%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB.png" alt="物理像素与逻辑像素对应关系"></p>
+<p>ps：古老的媒体查询的标准就是以逻辑像素为判断依据而不是物理像素</p>
+</li>
+</ul>
+<hr>
+<h2 id="PX"><a href="#PX" class="headerlink" title="PX"></a>PX</h2><blockquote>
+<p>这里指的是 css 中的 px</p>
+</blockquote>
+<ul>
+<li><p>定义：设备逻辑像素的单位，即1px等于1逻辑像素。</p>
+<p>​        在PC端的1080 x 1920的显示器中在正常的缩放比例下，1px=1逻辑像素=1物理像素。但在移动端由于屏幕物理像素与逻辑像素的关系通常不是1:1。所以在移动端开发时要慎用此单位，尤其是元素的宽度不应当直接用px写死否则在不同的设备上可能会导致布局混乱。</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/iphone-6.png" alt="iphone-6"></p>
+</li>
+</ul>
+<p>  <img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/iphone-5.png" alt="iphone-5"></p>
+<p>  如上图所示，你如果想要一个宽度为设备宽的的容器，你如果采用375px作为该元素的宽度，在iphone-6上他是正常的，但是在iphone-5上他就会超出设备可显示范围，或者产生横向滚动条，或者直接显示不完整。这种时候你就需要用到(vw 或者 %)这两种方式了。</p>
+<ul>
+<li><p>使用场景：</p>
+<ul>
+<li>项目运行设备固定的情况</li>
+<li>作为容器高度时使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="em"><a href="#em" class="headerlink" title="em"></a>em</h2>]]></content>
+      <tags>
+        <tag>others</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>new操作符到底干了什么.md</title>
+    <url>/2020/06/23/new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%88%B0%E5%BA%95%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88-md/</url>
+    <content><![CDATA[<p>代码实例</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> Func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//....    </span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> func = <span class="keyword">new</span> Func();</span><br></pre></td></tr></table></figure>
+
+<p>new 一共经历了四个阶段</p>
+<ol>
+<li><p>创建一个空对象</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置原型链</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">obj.__proto__ = Func.prototype;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>让 Func 中的 <code>this</code> 指向 obj, 并执行 Func 的函数体</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> result = Func.call(obj);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断Func返回值的类型：</p>
+<p>如果构造函数没有 return 或者 return 的是基本类型，则返回this；如果 return 一个引用类型，则返回这个引用类型。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> result === <span class="string">'object'</span>)&#123;</span><br><span class="line">	func = result;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	func = obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//eg:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Func1</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Func2</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'string or number or boolean'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Func3</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'123'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> func1 = <span class="keyword">new</span> Func1(<span class="string">'Tom'</span>);	<span class="comment">// func1-&gt; Func1:&#123;name:'Tom'&#125;</span></span><br><span class="line"><span class="keyword">let</span> func2 = <span class="keyword">new</span> Func2(<span class="string">'Jack'</span>);	<span class="comment">// func2 -&gt; Func2:&#123;name:'Jack'&#125;</span></span><br><span class="line"><span class="keyword">let</span> func3 = <span class="keyword">new</span> Func3(<span class="string">'Bob'</span>);	<span class="comment">// func3 -&gt; String:&#123;0:'B',1:'o',2:'b'&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>移动端页面和pc端页面的区别</title>
+    <url>/2020/06/11/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%92%8Cpc%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<blockquote>
+<p>本文转载自:<a href="https://www.cnblogs.com/mdr86553/p/12367618.html" target="_blank" rel="noopener">一梦梦的个人博客</a></p>
+</blockquote>
+<h2 id="一、使用体验上"><a href="#一、使用体验上" class="headerlink" title="一、使用体验上"></a>一、使用体验上</h2><ol>
+<li><p>操作方式</p>
+<p>PC端的操作方式与移动端已经有了明显的差别，PC端使用鼠标操作，操作包含滑动、左击、右击、双击操作，操作相对来说单一，交互效果相对较少，而对于手机端来说，包含手指操作点击、滑动、双击、双指放大、双指缩小、五指收缩和苹果最新的3Dtouch按压力度，除了手指操作外还可以配合传感器完成摇一摇、陀悬仪感应灯操作方式，操作方式更加的丰富，通过这些丰富的操作可设计不同新颖吸引人的交互互动设计。</p>
+</li>
+<li><p>屏幕尺寸</p>
+<p>随着时间的推移，移动端的设备屏幕逐渐增大，但是你再大也是大不过PC电脑屏幕的，这是毋庸置疑的。PC端屏幕大，所以他的视觉范围更广，可设计的地方更多，设计性更强，相对来说容错度更高一些有一些小的纰漏不容易被发现。移动端设备相对来说屏幕较小，操作局限性大，在设计上可用空间显得尤为珍贵，在小小的屏幕上使用粗大的手指操作也需要在设计中避免原件过小过近。</p>
+</li>
+<li><p>网络环境</p>
+<p>当下不管是移动端还是PC端都离不开网络，PC端设备连接网络更加稳定，而移动端可能遇到信号问题导致网络环境不佳，出现网速差甚至断网的问题，这就需要产品经理在设计中充分考虑网络问题，更好的设计相应的解决方案。</p>
+</li>
+<li><p>传感器</p>
+<p>移动端设备重磅武器来袭，完善的传感器是PC端设备望尘莫及的，压力、方向、重力、GPS、NFC、指纹识别、3Dtouch、陀螺仪等等等等，就是因为这些传感器的存在才使得我们的生活更加丰富多彩，有了他们你才能玩赛车游戏才能摇妹子才能统计每天走了多少步，产品在设计中巧妙地使用传感器能让产品添姿加彩。</p>
+</li>
+<li><p>使用场景与使用时间</p>
+<p>这两块我们一起来说，因为PC端设备的使用场景多为在家或者学校公司等一些固定的场景，所以其使用时间偏向于持续化，在一个特定的时间段内持续使用，而移动端设备不受局限可以吃饭用、坐车用、拉屎用、无聊打发时间用、躺着用、坐着用、倒立着用都没人管你，随时随地想用就用，所以他的使用时间更加灵活，时间更加碎片化，所以在操作上更偏向于短时间内可完成的。</p>
+</li>
+<li><p>软件迭代时间以及更新频次</p>
+<p>你有没有很久都没有更新你的PC软件了，但是你的手机软件确实永远保持着最新的状态，这就是他们两者的区别，对于移动端他的软件迭代时间较短，用户更新率较高而PC端软件迭代时间较长，除非出于需要用户一般不会主动更新软件，软件更新率低。</p>
+</li>
+<li><p>续航</p>
+<p>除了笔记本PC端台式机只要有点他就从没有考虑过这个问题，移动端设备则需要考虑。</p>
+</li>
+</ol>
+<h2 id="二、在功能设计上的区别"><a href="#二、在功能设计上的区别" class="headerlink" title="二、在功能设计上的区别"></a>二、在功能设计上的区别</h2><p>你有没有在移动端看到过下拉菜单，有没有在PC端看到过滑动解锁，相同的功能在不同的设备上有其自己的展现形式，下面我们罗列一二，因为例子实在太多就不一一展开。</p>
+<ol>
+<li><p>文字输入</p>
+<p>在文字输入中，PC端一般使用文本框解决。<br>而在移动端中因为手机屏幕尺寸以及UI风格的原因我们基本没有在手机上看到过PC端这样的展现形式，而是采用另起一页输入或者文字后直接输入方式，这就是各个平台根据自身特性的展现形式。</p>
+</li>
+<li><p>内容选择</p>
+<p>在PC端中，一般使用下拉菜单或者是单选按钮形式完成内容选择。<br>而在手机端由于手指的操作便捷性考虑一般不采用PC端的选择方式而是通过列表选择或者其他交互来完成。<br>这样的设计点不胜枚举，就不一一展开了，还需要在日常生活工作中多多留意，切不可把PC端的设计模型照搬到移动端。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>others</category>
+      </categories>
+      <tags>
+        <tag>others</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>浏览器内核简要</title>
     <url>/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/</url>
     <content><![CDATA[<ol>
@@ -740,6 +605,217 @@
       </categories>
       <tags>
         <tag>others</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>浏览器渲染机制</title>
+    <url>/2020/05/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<h2 id="一、什么是-DOCTYPE-及作用"><a href="#一、什么是-DOCTYPE-及作用" class="headerlink" title="一、什么是 DOCTYPE 及作用"></a>一、什么是 DOCTYPE 及作用</h2><blockquote>
+<p>DOCTYPE标签是一种标准通用标记语言的文档类型声明，它的目的是要告诉<a href="https://baike.baidu.com/item/标准通用标记语言/6805073" target="_blank" rel="noopener">标准通用标记语言</a>解析器，它应该使用什么样的文档类型定义（<a href="https://baike.baidu.com/item/DTD" target="_blank" rel="noopener">DTD</a>）来解析文档。</p>
+<p>DTD：document type definition，文档类型定义，是一系列的语法规则。会告诉浏览器以何种协议来解析文档，例如XML和HTML。</p>
+</blockquote>
+<p>对于前端来说作用就是<strong>告诉浏览器以何种DTD，以什么标准来解析我们的文档也就是我们的html文件。</strong></p>
+<h3 id="常见的-DOCTYPE"><a href="#常见的-DOCTYPE" class="headerlink" title="常见的 DOCTYPE"></a>常见的 DOCTYPE</h3><ul>
+<li><p>HTML 5</p>
+<p><code>&lt;!DOCTYPE html&gt;</code> ，这是目前最主要的。</p>
+</li>
+<li><p>HTML 4.01 Strict 4.01版本的严格模式DTD，包含所有的HTML元素和属性，但是不包括展示性和已经弃用的元素 （比如 font）。这种模式下使用已经废弃过的元素，浏览器会报错。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD HTML 4.01//EN"</span> <span class="meta-string">"http://www.w3.org/TR/html4/strict.dtd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML 4.01 Transitional 4.01版本的传统模式DTD，包含所有的HTML元素和属性，包括展示性和已经弃用的元素 （比如 font）。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="meta-string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<h2 id="二、浏览器渲染过程"><a href="#二、浏览器渲染过程" class="headerlink" title="二、浏览器渲染过程"></a>二、浏览器渲染过程</h2><p><img src="/2020/05/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B.png" alt="浏览器渲染过程"></p>
+<ol>
+<li>HTML 解释器解析 HTML 文件生成对应的DOM树，这也就是我们平常用js操作的DOM。同时CSS解释器解析CSS文件，生成相应的样式规则。</li>
+<li>DOM Tree 和 Style Rules 经过结合生成渲染树，浏览器通过 Layout 计算渲染树中的每一个元素的渲染位置。</li>
+<li>得出每一个元素的渲染位置以后，就开始绘制，然后显示。</li>
+</ol>
+<h2 id="三、Reflow（重排）"><a href="#三、Reflow（重排）" class="headerlink" title="三、Reflow（重排）"></a>三、Reflow（重排）</h2><blockquote>
+<p>DOM结构中的各个元素都有自己的盒子，这些都需要浏览器根据各种样式来计算并根据计算结果将元素放到它该出现的位置，这个过程我们称之为reflow。</p>
+</blockquote>
+<p>触发Reflow的条件:</p>
+<ol>
+<li>增加，删除，修改DOM节点时，会导致Reflow或Repaint。</li>
+<li>移动DOM的位置时，或者在元素上添加动画。</li>
+<li>修改CSS样式时。</li>
+<li>当Resize窗口的时候（移动端没有这个问题），或者是滚动页面的时候。</li>
+<li>修改网页的默认字体时（不要轻易修改网页的默认字体）。</li>
+</ol>
+<h2 id="四、Repaint（重绘）"><a href="#四、Repaint（重绘）" class="headerlink" title="四、Repaint（重绘）"></a>四、Repaint（重绘）</h2><blockquote>
+<p>当各种盒子的位置，大小以及其他属性，例如颜色、字体大小等都确定下来后，浏览器于是把这些元素都按照各自的特性绘制了一遍，于是页面的内容出现了，这个过程称之为repaint。</p>
+</blockquote>
+<p>触发Repaint的条件:</p>
+<ol>
+<li>DOM改动</li>
+<li>CSS改动</li>
+</ol>
+<p>ps：总的来说导致repaint的原因就是上述两点，但具体的原因有非常多，总之页面出现了变化，肯定就导致了repaint。</p>
+<p>频繁的 Repaint 会影响整个网页的性能和流畅度。</p>
+<p>例如动态添加一百个div，那么正常情况下就会不断的repaint，为了减轻这种影响我们可以使用</p>
+<p><code>document.createDocumentFragment()</code>的方式将所有要添加的元素放入fragment片段中，最后统一插入document，这样就只会渲染一次。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> root = <span class="built_in">document</span>.querySelector(<span class="string">'dom元素'</span>);</span><br><span class="line"><span class="keyword">let</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    div.innerHTML = <span class="string">'我是第'</span> + i + <span class="string">'个div'</span>;</span><br><span class="line">    fragment.appendChild(div);</span><br><span class="line">&#125;</span><br><span class="line">root.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>html</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>配置npm安装全局模块时的路径</title>
+    <url>/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
+    <content><![CDATA[<blockquote>
+<p>配置原因:</p>
+<p>在执行 <code>npm install &#39;包名&#39; -g</code> 命令全局安装的时候，会默认将模块安装在 <code>C:\Users\用户名\AppData\Roaming路径下的npm和npm_cache</code> 中，不方便管理并且占用 C 盘空间。</p>
+</blockquote>
+<ul>
+<li><p>解决方案：配置自定义的全局模块安装目录。</p>
+<ol>
+<li><p>手动创建两个文件夹 <code>node_global</code> 和 <code>node_cache</code> 。</p>
+<p>如果你的 <code>Node.js</code> 没有安装在 C 盘，你可以直接在 <code>Node.js</code> 的安装目录下创建这两个文件。</p>
+<p>如果你的 <code>Node.js</code> 是安装在 C 盘的，那么不建议你直接在其安装目录下创建，因为这样做意义不大，包文件还是存放在 C 盘。这种情况你可以在 C 盘以外你认为比较好管理的地方创建 <code>node_global</code> 和 <code>node_cache</code> 这两个目录。</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-1.png" alt="1-1"></p>
+<p>上图的<code>npm-install-package</code> 也是我手动创建的。总之哪里好管理你就先建在那里。</p>
+</li>
+<li><p>在 cmd 命令行下执行如下配置命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">"D:\npm-install-package\node_global"</span></span><br><span class="line"></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">"D:\npm-install-package\node_cache"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行完毕后，需要去配置环境变量：</p>
+<p>环境变量 – 系统变量：新建一个变量 <strong>NODE_PATH</strong> ，值为 <strong>D:\npm-install-package\node_global\node_modules</strong>，如下图所示：</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-2.png" alt="1-2"></p>
+<p>环境变量 – 用户变量：编辑用户变量里面的<strong>Path</strong>，将原来的 npm 路径</p>
+<p>(“C:\Users\用户名\AppData\Roaming\npm”) 改为 <strong>D:\npm-install-package\node_global</strong> 如下图所示：</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-3.png" alt="1-3"></p>
+</li>
+<li><p>配置已经完成，可以全局安装一个包测试一下。</p>
+<p>cmd 下执行 <code>npm install webpack -g</code> 全局安装 <code>webpack</code> 如下图所示：</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-4.png" alt="1-4"></p>
+<p>安装完毕后查看我们的<code>node_cache</code> 和 <code>node_global</code> 文件夹，如下图所示：</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-5.png" alt="1-5"></p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-6.png" alt="1-6"></p>
+</li>
+<li><p>最后 cmd 任意目录下输入 <code>webpack -v</code> 检查是否安装成功，如下图所示：</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-7.png" alt="1-7"></p>
+</li>
+</ol>
+</li>
+<li><p>可能遇到的问题</p>
+<ol>
+<li><p>首先是 cnpm 的问题：有些兄弟之前为了装包快是自己配置了淘宝镜像的，但是当我们配置完了上面的内容会发现 cnpm 用不了了 <strong>cnpm 不是系统内部或外部命令</strong>。这是由于我们更改了环境变量导致的，因为原来的 cnpm 是装在了 “C:\Users\用户名\AppData\Roaming\npm” 里的，后来改变了该路径，所以系统找不到我们的 cnpm 很正常。</p>
+<p>此时你只需要重新执行 <code>npm install cnpm -g --registry=https://registry.npm.taobao.org</code> 就行了。执行以后在我们的 <code>node_global</code> 下可以看见如下图所示：</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-8.png" alt="1-8"></p>
+<p>并且可以在 <code>node_global\node_modules</code> 下看见我们安装的包，如下图所示：</p>
+<p><img src="/2020/05/22/%E9%85%8D%E7%BD%AEnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97%E6%97%B6%E7%9A%84%E8%B7%AF%E5%BE%84/1-9.png" alt="1-9"></p>
+<p>同理之前其它的包有可能也用不了了，只需重新安装就好。</p>
+</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>npm</category>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+        <tag>Node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOM事件</title>
+    <url>/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="DOM事件的级别"><a href="#DOM事件的级别" class="headerlink" title="DOM事件的级别"></a>DOM事件的级别</h2><ul>
+<li>DOM0    <code>element.onclick = function(){}</code></li>
+<li>DOM2    <code>element.addEventListener(&#39;click&#39;,function(){},false)</code></li>
+<li>DOM3    <code>element.addEventListener(&#39;keyup&#39;,function(){},false)</code> </li>
+</ul>
+<p>DOM3 和 DOM2 相比只是添加了更多的事件类型，这里没有DOM1是因为DOM1没有实质性的内容。</p>
+<h2 id="DOM事件模型"><a href="#DOM事件模型" class="headerlink" title="DOM事件模型"></a>DOM事件模型</h2><blockquote>
+<p>事件模型有两个部分，捕获和冒泡。</p>
+</blockquote>
+<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.png" alt="事件模型"></p>
+<h3 id="1-何为DOM"><a href="#1-何为DOM" class="headerlink" title="1.何为DOM"></a>1.何为DOM</h3><p>DOM是“Document Object  Model”的缩写，中文译为“文档对象模型”。它是一种跨平台、跨语言的编程接口，将HTML，XHTML，XML文档映射成树形结构，树的每一个节点都是一个对象。正因如此，面向对象的编程语言（如javascript）可以通过DOM对HTML，XHTML，XML文档进行操作。对于HTML文档来说，它的根结点为document对象，HTML元素为element对象，HTML元素的属性为attr对象。</p>
+<h3 id="2-何为DOM事件及如何对其作出响应"><a href="#2-何为DOM事件及如何对其作出响应" class="headerlink" title="2.何为DOM事件及如何对其作出响应"></a>2.何为DOM事件及如何对其作出响应</h3><p>在浏览网页时，我们常常需要页面对用户的操作作出响应，比如点击“阅读全文”后我们期望页面展示被折叠的文本，按下回车键后浏览器提交已填好的表单。用户的各种操作都是“事件”。事件都是在对象上发生的，可能是DOM对象、BOM对象，等等。事件发生后，对象可能会作出响应，也有可能“无动于衷”。我们希望DOM元素对事件作出响应，一般而言有两种方法：<br><strong>i.事件属性</strong><br>事件属性是一种特殊的属性，它的值规定了对应事件发生时需要执行的javascript脚本。例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"console.log('button clicked!')"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面为button标签添加了事件属性onclick，其值为”console.log(‘button clicked!’)”，它规定了当元素被鼠标点击时，控制台输出’button clicked’。<br><strong>ii.addEventListener()方法</strong><br>EventTarget.addEventListener()方法将指定的监听器注册到EventTarget上，当该对象触发指定的事件时，指定的回调函数就会被执行。EventTarget可以是element对象,document对象或者任何其他支持事件的对象。例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--html文件中--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">'mybutton'</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> mybutton=<span class="built_in">document</span>.getElementById(<span class="string">'mybutton'</span>);</span></span><br><span class="line"><span class="javascript">	mybutton.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'button clicked!'</span>);&#125;);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上例为button元素注册了click事件的监听器，并规定事件时触发控制台输出’button clicked’。</p>
+<h3 id="3-DOM事件模型"><a href="#3-DOM事件模型" class="headerlink" title="3.DOM事件模型"></a>3.DOM事件模型</h3><p>在讲解DOM事件模型前，再用一个例子作为引入。请看下面的html文件：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Event Model<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">div</span>&#123;<span class="attribute">position</span>: absolute;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#outer</span>&#123;</span></span><br><span class="line">        top: 100px;</span><br><span class="line">        left: 100px;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 400px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#aff</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#inner1</span>,<span class="selector-id">#inner2</span>&#123;</span></span><br><span class="line">        top: 50px;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 300px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#f9a</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#inner1</span>&#123;<span class="attribute">left</span>: <span class="number">50px</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#inner2</span>&#123;<span class="attribute">left</span>: <span class="number">350px</span>;&#125;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#core</span>&#123;</span></span><br><span class="line">        left: 50px;</span><br><span class="line">        top: 50px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 150px;</span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span>: <span class="selector-id">#f50</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'outer'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'inner1'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>        </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'inner2'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'core'</span> <span class="attr">onclick</span>=<span class="string">"console.log(this.id)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里为id分别为outer,inner1,inner2,core的4个元素定义了事件属性，元素被点击后将在控制台输出它的id。现在问题来了：<br>如果我点击core元素，控制台将会输出什么？<br>点击core元素时，由于core元素包含在inner2元素里，inner2元素同样被点击了;同理，inner2元素包含在outer元素里，那么outer元素也被点击了。这种情况下哪一个元素的click事件将会被触发,或者说三者都被触发？如果说三者都被触发，那么又是以怎样的顺序被触发？<br>我在火狐浏览器做了一次实验，控制台输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">core</span><br><span class="line">inner2</span><br><span class="line">outer</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，三者的事件都被触发了，且是“由内向外”触发的。<br>下面我们再做一个有趣的实验：我们将上面的html文件再做一个小小的改动，将core元素的样式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">left: 50px;</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">left: -250px;</span><br></pre></td></tr></table></figure>
+
+<p>此时观察页面我们会发现，尽量core是inner2的子节点，但由于我们定义了“怪异”的样式，它跑到了inner1里面。现在我们再次用鼠标点击core，观察控制台的输出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">core</span><br><span class="line">inner2</span><br><span class="line">outer</span><br></pre></td></tr></table></figure>
+
+<p>和刚才的结果一模一样！尽管表面上inner1似乎被点击了，但它的click事件并没有触发;反而是看似未被点击的inner2元素的click事件被触发了。仿佛core元素的click事件被触发后，click事件一层一层向上“传播”给了父节点。<br>为了解释刚才的实验结果，是时候开始讲解DOM事件模型了。<br>当一个事件发生时，事件会在DOM树中进行传播。传播分为两个阶段：</p>
+<ul>
+<li><p>捕获阶段<br>在此阶段，事件从根结点（即document结点）开始向下传播，直到事件源所在元素。</p>
+</li>
+<li><p>冒泡阶段<br>在此阶段，事件从事件源开始向上传播，直到根结点。</p>
+<p>拿刚才的例子来说，事件传播的顺序为：<br>document捕获-&gt;html捕获-&gt;body捕获-&gt;outer捕获-&gt;inner2捕获-&gt;core捕获-&gt;core冒泡-&gt;inner2冒泡-&gt;outer冒泡-&gt;html冒泡-&gt;document冒泡</p>
+<p>对于事件属性，默认在冒泡阶段触发事件。如果用addEventListener()方法注册监听器，则可以指定在捕获阶段还是冒泡阶段触发事件：如果最后一个参数为false（默认值），则在冒泡阶段触发事件;如果为true，则在捕获阶段触发事件。</p>
+<p>一般来说，我们推荐采用addEventListener()方法来注册监听器，而尽量不用事件属性。因为事件属性不利于行为与结构的分离，使代码难以维护。</p>
+</li>
+</ul>
+<h2 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h2><p>一个完整的事件流包含三个阶段：捕获阶段（Capturing Phase）、事件处理阶段（Target Phase）、事件冒泡阶段（Bubbling Phase）。</p>
+<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81.jpg" alt="DOM事件流"></p>
+<p>从用户触发元素到浏览器执行响应事件这整个过程，就是事件流。</p>
+<h2 id="DOM事件捕获的具体流程"><a href="#DOM事件捕获的具体流程" class="headerlink" title="DOM事件捕获的具体流程"></a>DOM事件捕获的具体流程</h2><p>见上图 Capturing Phase 阶段。</p>
+<h2 id="Event对象的常见应用"><a href="#Event对象的常见应用" class="headerlink" title="Event对象的常见应用"></a>Event对象的常见应用</h2><ul>
+<li><p><strong>event.preventDefault()</strong></p>
+<p>阻止事件的默认行为，例如<code>&lt;a&gt;&lt;/a&gt;</code>标签的默认点击行为是跳转到新的页面，使用<code>event.preventDefault()</code>可以阻止这种跳转行为。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"target"</span> <span class="attr">href</span>=<span class="string">"www.baidu.com"</span>&gt;</span>跳转到百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> target = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>);</span></span><br><span class="line"><span class="actionscript">    target.addEventListener(<span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        event.preventDefault(); <span class="comment">//阻止跳转行为</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>event.stopPropagation()</strong></p>
+<p>阻止冒泡行为：点击子元素时不会出发父元素的点击事件。</p>
+</li>
+<li><p><strong>event.stopImmediatePropagation()</strong></p>
+<p>当一个DOM元素绑定了多个响应事件后，可以通过此方法阻止指定响应事件的执行。</p>
+</li>
+<li><p><strong>event.currentTarget</strong></p>
+<p>就是指注册事件时所指向的元素。与<code>event.target</code>的区别，举例说明：</p>
+<p>父级元素绑定了一个点击事件，在父级元素里面还有一个子元素，点击子元素肯定是会触发父元素的点击事件的，此时<code>event.currentTarget</code>就是父元素而e<code>event.target</code>则是子元素。</p>
+<p>具体的说就是<code>event.currentTarget</code>是注册事件时所指向的元素，而<code>event.target</code>是响应事件的最小子元素，也就是最深层级的触发事件的元素。这也是事件委托的原理。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.parent</span>&#123;</span></span><br><span class="line">            width: 200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            background-color: thistle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">        <span class="selector-class">.child</span>&#123;</span></span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            background-color: skyblue;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> par = <span class="built_in">document</span>.querySelector(<span class="string">".parent"</span>);</span></span><br><span class="line"><span class="actionscript">    par.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">    	<span class="built_in">console</span>.log(<span class="string">'currentTarget'</span>, event.currentTarget);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">'target'</span>,event.target);</span></span><br><span class="line">    &#125;)</span><br><span class="line"> <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下图所示：</p>
+<p><img src="/2020/05/26/DOM%E4%BA%8B%E4%BB%B6/target&currentTarget.png" alt="target&amp;currentTarget"></p>
+</li>
+<li><p><strong>event.target</strong></p>
+<p><strong>事件委托</strong>时用到的最多，当一个父级元素下面的子元素非常多，并且子元素都有各自的点击事件，普通做法就是一个一个添加响应事件，这种做法并不是理想的做法，浪费大量的内存，以及过多的事件注册会导致用户体验很差。</p>
+<p>此时我们就可以采用事件委托的方式，将所有子元素的事件都绑定在父级元素上，然后通过<code>event.target</code>判断具体是点击的哪一个子元素，然后执行相应的事件处理函数即可。</p>
+<p><a href="https://wenbin-zhang.github.io/2020/05/26/事件委托/" target="_blank" rel="noopener">事件委托详情参见&gt;&gt;</a></p>
+</li>
+</ul>
+<h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 自定义一个Event对象</span></span><br><span class="line"><span class="keyword">let</span> eve = <span class="keyword">new</span> Event(<span class="string">'custome'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定自定义事件</span></span><br><span class="line">dom.addEventListener(<span class="string">'custome'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'custome'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行自定义事件</span></span><br><span class="line">dom.dispatchEvent(eve);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
 </search>

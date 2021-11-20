@@ -197,6 +197,194 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/11/20/canvas%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WenBin-Zhang">
+      <meta itemprop="description" content="Runoob of web front end~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenBin-Zhang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/20/canvas%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6/" class="post-title-link" itemprop="url">canvas基础之几何图形绘制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-20 23:20:14" itemprop="dateCreated datePublished" datetime="2021-11-20T23:20:14+08:00">2021-11-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-21 00:12:10" itemprop="dateModified" datetime="2021-11-21T00:12:10+08:00">2021-11-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/canvas/" itemprop="url" rel="index"><span itemprop="name">canvas</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Canvas 是 HTML5新增的，一个可以使用脚本（通常为 JavaScript）在其中绘制图像的 HTML5 元素。它可以用来制作照片集或者制作动画，甚至可以进行实时视频处理和渲染。<br>Canvas 是由 HTML 代码配合高度和宽度属性而定义出的可绘制区域。JavaScript 代码可以访问该区域，类似于其它通用的二维 API, 通过一套完整的绘图函数来动态生成图形。</p>
+</blockquote>
+<h2 id="一、Canvas基本使用"><a href="#一、Canvas基本使用" class="headerlink" title="一、Canvas基本使用"></a>一、Canvas基本使用</h2><h3 id="1-1、canvas-元素"><a href="#1-1、canvas-元素" class="headerlink" title="1.1、canvas 元素"></a>1.1、canvas 元素</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>canvas 只有两个可选的属性 <code>width</code>、<code>height</code>属性，默认<code>width = 300</code>、<code>height = 150</code>, 单位为<code>px</code>。也可以通过css属性设置画布的宽高，但是通过css设置的宽高必须和默认的画布宽高比例保持一致，否则画布会发生扭曲。所以最好不要使用css属性设置画布的宽高。</p>
+<p>由于canvas是HTML5新增的标签，所以在一些低版本的浏览器会出现兼容性问题（IE9以前的IE浏览器）。所以需要准备一定的替换内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line">    您的浏览器不支持 canvas 标签</span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>浏览器如果支持canvas标签，则不会执canvas标签内部的内容，如果不支持canvas标签，则会显示标签里面的内容。</p>
+<h3 id="2-2、渲染上下文-The-Rending-Context"><a href="#2-2、渲染上下文-The-Rending-Context" class="headerlink" title="2.2、渲染上下文(The Rending Context)"></a>2.2、渲染上下文(The Rending Context)</h3><p><code>&lt;canvas&gt;</code> 会创建一个固定大小的画布，会暴露一个或多个<strong>渲染上下文(画笔)</strong>，使用<strong>渲染上下文</strong>来绘制和处理要展示的内容。主要用到的是2D渲染上下文，除此之外还有3D渲染上下文。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelecter(<span class="string">'#canvas'</span>)</span><br><span class="line"><span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>) <span class="comment">// 获取 2d 上下文对象</span></span><br></pre></td></tr></table></figure>
+
+<p>同样的如果浏览器不支持canvas标签，那么在脚本中获取2d上下文对象会失败，甚至可能会报错影响正常的脚本执行，所以在js中获取上下文对象也需要做兼容性判断。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelecter(<span class="string">'#canvas'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (canvas.getContext) &#123;</span><br><span class="line">    <span class="keyword">const</span> ctx = canvas.getContext()</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// hack code ....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是一段基础的代码模板</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> canvas = <span class="built_in">document</span>.querySelecter(<span class="string">'#canvas'</span>)</span></span><br><span class="line"></span><br><span class="line">    if (canvas.getContext) &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span></span><br><span class="line"><span class="actionscript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// hack code...</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WenBin-Zhang">
+      <meta itemprop="description" content="Runoob of web front end~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WenBin-Zhang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">前端单位学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-06 22:02:16 / 修改时间：23:18:14" itemprop="dateCreated datePublished" datetime="2020-09-06T22:02:16+08:00">2020-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前端单位简单分析与对比"><a href="#前端单位简单分析与对比" class="headerlink" title="前端单位简单分析与对比"></a>前端单位简单分析与对比</h1><blockquote>
+<p>分享者：张文斌</p>
+<p>时间：2020/09/09</p>
+</blockquote>
+<h2 id="一、讲在前面"><a href="#一、讲在前面" class="headerlink" title="一、讲在前面"></a>一、讲在前面</h2><h3 id="1、物理像素"><a href="#1、物理像素" class="headerlink" title="1、物理像素"></a>1、物理像素</h3><ul>
+<li><p>定义：设备像素（物理像素），顾名思义，显示屏是由一个个物理像素点组成的，通过控制每个像素点的颜色，使屏幕显示出不同的图像，屏幕从工厂出来那天起，它上面的物理像素点就固定不变了，单位pt（真正意义上的绝对单位）。</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/D:%5Cblog%5Csource_posts%5C%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%5C%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0-1.png" alt="物理像素-1"></p>
+</li>
+<li><p>示意：以早期LCD显示器为例3个液晶为一组，通过红绿蓝三原色不同比例的光混合，可以产生我们需要的特定颜色。这样的一组液晶作为显示器的最小元素认为是一个像素点（物理像素）。</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0-2.jpg" alt="物理像素-2"></p>
+</li>
+</ul>
+<h3 id="2、逻辑像素"><a href="#2、逻辑像素" class="headerlink" title="2、逻辑像素"></a>2、逻辑像素</h3><ul>
+<li><p>定义：设备独立像素，也称为逻辑像素，简称`DIP:Device independent Pixel。早期的显示器是没有逻辑像素这个概念的，或者说当时物理像素和逻辑像素是1:1的关系。即我们操作的1像素确实是对应的1物理像素，但是自从Retina屏诞生以后这两者的关系便区分开来，1逻辑像素等于n物理像素。两者之间有一个换算方法，要根据设备的dpr结合换算公式换算。（这里就不展开了）<br>$$<br>逻辑像素 = css像素 = 设备独立像素<br>$$</p>
+</li>
+<li><p>示意：设备像素比(dpr) 是指在<strong>移动开发</strong>中1个css像素占用多少设备像素，如2代表1个css像素用2x2个设备像素来绘制。设备像素比(dpr)，公式为<code>1px = (dpr)^2 * 1dp</code>，可以理解为1px由多少个设备像素组成；</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0%E4%B8%8E%E9%80%BB%E8%BE%91%E5%83%8F%E7%B4%A0%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB.png" alt="物理像素与逻辑像素对应关系"></p>
+<p>ps：古老的媒体查询的标准就是以逻辑像素为判断依据而不是物理像素</p>
+</li>
+</ul>
+<hr>
+<h2 id="PX"><a href="#PX" class="headerlink" title="PX"></a>PX</h2><blockquote>
+<p>这里指的是 css 中的 px</p>
+</blockquote>
+<ul>
+<li><p>定义：设备逻辑像素的单位，即1px等于1逻辑像素。</p>
+<p>​        在PC端的1080 x 1920的显示器中在正常的缩放比例下，1px=1逻辑像素=1物理像素。但在移动端由于屏幕物理像素与逻辑像素的关系通常不是1:1。所以在移动端开发时要慎用此单位，尤其是元素的宽度不应当直接用px写死否则在不同的设备上可能会导致布局混乱。</p>
+<p><img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/iphone-6.png" alt="iphone-6"></p>
+</li>
+</ul>
+<p>  <img src="/2020/09/06/%E5%89%8D%E7%AB%AF%E5%8D%95%E4%BD%8D%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/iphone-5.png" alt="iphone-5"></p>
+<p>  如上图所示，你如果想要一个宽度为设备宽的的容器，你如果采用375px作为该元素的宽度，在iphone-6上他是正常的，但是在iphone-5上他就会超出设备可显示范围，或者产生横向滚动条，或者直接显示不完整。这种时候你就需要用到(vw 或者 %)这两种方式了。</p>
+<ul>
+<li><p>使用场景：</p>
+<ul>
+<li>项目运行设备固定的情况</li>
+<li>作为容器高度时使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="em"><a href="#em" class="headerlink" title="em"></a>em</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E7%AE%80%E8%A6%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -850,7 +1038,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-26 19:04:01 / 修改时间：22:08:23" itemprop="dateCreated datePublished" datetime="2020-05-26T19:04:01+08:00">2020-05-26</time>
+              <time title="创建时间：2020-05-26 19:04:01 / 修改时间：22:15:21" itemprop="dateCreated datePublished" datetime="2020-05-26T19:04:01+08:00">2020-05-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1076,241 +1264,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="WenBin-Zhang">
-      <meta itemprop="description" content="Runoob of web front end~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WenBin-Zhang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">javascript获取元素的宽高的四种方式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-05-24 17:48:32 / 修改时间：18:32:15" itemprop="dateCreated datePublished" datetime="2020-05-24T17:48:32+08:00">2020-05-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>通过 <code>javascript</code> 获取元素的宽高是经常使用的，在此总结一些常见的方法，以及各个方法的区别，和适用场景。</p>
-</blockquote>
-<h2 id="一、dom-style-width-height"><a href="#一、dom-style-width-height" class="headerlink" title="一、dom.style.width/height"></a>一、dom.style.width/height</h2><p>通过 DOM 元素的 <code>style</code> 属性可以获取到元素的内联样式，如果元素的宽高是内联样式规定的可以采用这个方法。如果元素的宽高不是由内联样式指定，此方法无效。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"targt"</span> <span class="attr">style</span>=<span class="string">"width:100px;height:100px;background-color:thistle"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(dom.style.width); <span class="comment">// 100px</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>PS:此方法只能获取到元素的内联样式指定的宽高，如果是行内样式或者外联样式是获取不到的。</strong></p>
-<h2 id="二、dom-currentStyle-width-height"><a href="#二、dom-currentStyle-width-height" class="headerlink" title="二、dom.currentStyle.width/height"></a>二、dom.currentStyle.width/height</h2><p>获取的是元素经过浏览器渲染以后的<strong>及时宽高</strong>，比较第一种更全面不局限于内联样式。但是此方法只对<strong>IE浏览器</strong>有效。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(dom.currentStyle.width); <span class="comment">// IE浏览器下: 100px</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="三、window-getComputedStyle-dom-width-height"><a href="#三、window-getComputedStyle-dom-width-height" class="headerlink" title="三、window.getComputedStyle(dom).width/height"></a>三、window.getComputedStyle(dom).width/height</h2><p>这个原理跟第二种一样，是获取元素渲染以后的<strong>及时宽高</strong>，此方法适用的是标准浏览器<strong>Firefox、chrome</strong>等。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> width = <span class="built_in">window</span>.getComputedStyle(dom).width;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(width); <span class="comment">// 标准浏览器下: 100px;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="四、dom-getBoundingClientRect-width-height"><a href="#四、dom-getBoundingClientRect-width-height" class="headerlink" title="四、dom.getBoundingClientRect().width/height"></a>四、dom.getBoundingClientRect().width/height</h2><p><code>getBoundingClientRect()</code>这个api其实本事不是专门为了获取元素宽高而使用的，它主要是获取浏览器及时运行完以后一个dom元素的绝对位置信息，但是包含了元素宽高。返回了四个主要内容<code>top</code>、<code>left</code>、<code>width</code>、<code>height</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#target</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        background-color: thistle;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> dom = <span class="built_in">document</span>.querySelector(<span class="string">"#target"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> width = dom.getBoundingClientRect().width;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(width); <span class="comment">// 100; 注意它只返回数值 100 而不是完整的 100px;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>getBoundingClientRect()</code>完整返回值如下图所示：</p>
-<p><img src="/2020/05/24/javascript%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%BD%E9%AB%98%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/getBoundingClientRect%E8%BF%94%E5%9B%9E%E5%80%BC.png" alt="getBoundingClientRect返回值"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/float%E5%B8%83%E5%B1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="WenBin-Zhang">
-      <meta itemprop="description" content="Runoob of web front end~">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WenBin-Zhang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/23/float%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">float布局</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-23 10:08:51" itemprop="dateCreated datePublished" datetime="2020-05-23T10:08:51+08:00">2020-05-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-07 16:18:48" itemprop="dateModified" datetime="2020-07-07T16:18:48+08:00">2020-07-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/layout/" itemprop="url" rel="index"><span itemprop="name">layout</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>float 属性定义元素在哪个方向浮动。以往这个属性总应用于图像，使文本围绕在图像周围，不过在 CSS 中，任何元素都可以浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。</p>
-<p>如果浮动非替换元素，则要指定一个明确的宽度；否则，它们会尽可能地窄。</p>
-</blockquote>
-<p><strong>PS:</strong>假如在一行之上只有极少的空间可供浮动元素，那么这个元素会跳至下一行，这个过程会持续到某一行拥有足够的空间为止。</p>
-<h2 id="常见的取值"><a href="#常见的取值" class="headerlink" title="常见的取值"></a>常见的取值</h2><table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>left</td>
-<td>元素向左浮动。</td>
-</tr>
-<tr>
-<td>right</td>
-<td>元素向右浮动。</td>
-</tr>
-<tr>
-<td>none</td>
-<td>默认值。元素正常显示。</td>
-</tr>
-<tr>
-<td>inherit</td>
-<td>从父元素继承float属性的值。</td>
-</tr>
-</tbody></table>
-<h2 id="浮动原理"><a href="#浮动原理" class="headerlink" title="浮动原理"></a>浮动原理</h2><p>设置了浮动属性的元素会脱离正常的文档流，相对于其它正常的元素浮动起来。浮动的参照边界是父级元素的边界或者是其它浮动元素的边界。如下图所示。</p>
-<p><img src="/2020/05/23/float%E5%B8%83%E5%B1%80/%E6%B5%AE%E5%8A%A8%E5%8E%9F%E7%90%86.png" alt="浮动原理"></p>
-<h2 id="浮动的影响"><a href="#浮动的影响" class="headerlink" title="浮动的影响"></a>浮动的影响</h2><ul>
-<li><p>不会影响未浮动的块级元素布局，但会影响内联元素的布局。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">            <span class="selector-id">#container-one</span>&#123;</span></span><br><span class="line">                height: 200px;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-id">#container-one</span> <span class="selector-tag">div</span>&#123;</span></span><br><span class="line">                width: 100px;</span><br><span class="line">                height: 100px;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-id">#container-one</span> <span class="selector-tag">span</span>&#123;</span></span><br><span class="line">                background-color: deepskyblue;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-class">.item-block</span>&#123;</span></span><br><span class="line">                background-color: thistle;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-class">.item-float</span>&#123;</span></span><br><span class="line">                background-color: wheat;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="css">            <span class="selector-class">.item-float-left</span>&#123;</span></span><br><span class="line">                float: left;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">article</span> <span class="attr">id</span>=<span class="string">"container-one"</span>&gt;</span>            </span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-block"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>           </span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>这是一个行内元素<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-float item-float-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/05/23/float%E5%B8%83%E5%B1%80/1.png" alt="1"></p>
-</li>
-<li><p>浮动后的元素可以设置宽度和高度，意味着内联元素浮动以后会变成 <code>inline-block</code> 元素</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">            <span class="selector-id">#container-two</span>&#123;</span></span><br><span class="line">                width: 500px;</span><br><span class="line">                height: 100px;</span><br><span class="line">                background-color: darkcyan;                </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">            <span class="selector-id">#container-two</span> <span class="selector-tag">span</span>&#123;</span></span><br><span class="line">                width: 200px;</span><br><span class="line">                height: 100px;</span><br><span class="line">                background-color: deepskyblue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">            <span class="selector-id">#container-two</span> <span class="selector-class">.float</span>&#123;</span></span><br><span class="line">                float: left;</span><br><span class="line">                background-color: wheat;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">article</span> <span class="attr">id</span>=<span class="string">"container-two"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>普通内联元素,无法设置宽高<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"float"</span>&gt;</span>浮动后的内联元素，可以设置宽高<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/05/23/float%E5%B8%83%E5%B1%80/2.png" alt="2"></p>
-</li>
-<li><p>可能导致父元素高度坍塌</p>
-<p>前面的示例都是对父元素设置了一个固定高度，如果不设置这个高度，正常来说父元素的高度将由子元素的高度撑开，但是浮动后的子元素是脱离了正常的文档流的，这种情况下是不会为父元素提供可使用的高度的。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">            <span class="selector-id">#container-three</span>&#123;</span></span><br><span class="line">                width: 500px;</span><br><span class="line">                background-color: darkcyan;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">            <span class="selector-id">#container-three</span> <span class="selector-class">.float</span>&#123;</span></span><br><span class="line">                width: 100px;</span><br><span class="line">                height: 100px;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">            <span class="selector-id">#container-three</span> <span class="selector-class">.float-left</span>&#123;</span></span><br><span class="line">                float: left;</span><br><span class="line">                background-color: thistle;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">            <span class="selector-id">#container-three</span> <span class="selector-class">.float-right</span>&#123;</span></span><br><span class="line">                float: right;</span><br><span class="line">                background-color: wheat;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">article</span> <span class="attr">id</span>=<span class="string">"container-three"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float float-left"</span>&gt;</span>左浮动子元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float float-right"</span>&gt;</span>右浮动子元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/05/23/float%E5%B8%83%E5%B1%80/%E6%B5%AE%E5%8A%A8%E5%AF%BC%E8%87%B4%E7%88%B6%E5%85%83%E7%B4%A0%E9%AB%98%E5%BA%A6%E5%9D%8D%E5%A1%8C%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="浮动导致父元素高度坍塌示意图"></p>
-<p>如上图所示，浮动的子元素还是可以找到正确的参照边界（父元素的左右边框），但是通过审查元素会发现父级元素 <code>&lt;article id=&quot;contaiiner&gt;&lt;/article&gt;&quot;</code> 的高度是0。这就是元素浮动导致的父级元素高度坍塌现象。</p>
-</li>
-</ul>
-<h2 id="闭合浮动"><a href="#闭合浮动" class="headerlink" title="闭合浮动"></a>闭合浮动</h2><blockquote>
-<p>清除浮动和闭合浮动的区别：</p>
-<p>清除浮动是指的CSS中的属性: clear: left|right|both|none;</p>
-<p>闭合浮动是指的是，通过一定方法，减少或消除在布局过程中由于使用浮动属性带来的问题，例如上面提到的父级元素高度崩塌等问题。</p>
-</blockquote>
-<p>闭合浮动常用的几种方式：</p>
-<p>1、在浮动元素末尾添加一个空 <code>div</code> 设置其 <code>clear</code> 属性值为 both，例如 <code>&lt;div style=&quot;clear:both&quot;&gt;&lt;/div&gt;</code></p>
-<p>2、父级元素定义 <code>overflow:hidden</code></p>
-<p>3、对父级元素也使用浮动，就是说让所有元素都浮动起来，这种方法只建议用于理论，实际操作这种方式不太现实。</p>
-<p>4、对父级元素设置伪元素，即 ：after</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.class-name</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/05/23/float%E5%B8%83%E5%B1%80/%E9%97%AD%E5%90%88%E6%B5%AE%E5%8A%A8%E5%90%8E%E7%9A%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="闭合浮动后的示意图"></p>
-<p>如上图所示：闭合浮动后父级元素的高度出来了，这样即可解决高度崩塌的问题了。</p>
-<p>总结：闭合浮动主要依靠两种途径</p>
-<ol>
-<li>利用clear属性实现，例如上文的1，4解决方案</li>
-<li>利用父级元素产生BFC来实现，例如上文的2，3解决方案</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1382,20 +1335,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1422,7 +1375,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
